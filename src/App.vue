@@ -1,22 +1,26 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <head-comp></head-comp>
+    <router-view class="container-box"></router-view>
   </div>
 </template>
 
 <script>
+import HeadComp from '@/components/head_comp'
 export default {
   name: 'app',
+  components:{
+    HeadComp
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color:$dark-color;
+  font-size:14px;
 }
 </style>

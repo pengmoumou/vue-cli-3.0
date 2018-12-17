@@ -5,7 +5,7 @@ import en from './en.js'
 
 Vue.use(VueI18n)
 
-let language = localStorage.getItem("leekers_language");
+let language = localStorage.getItem("vue_language");
 
 const i18n = new VueI18n({
   locale: language ? language : 'zh',
