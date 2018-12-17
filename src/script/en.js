@@ -10,6 +10,5 @@ export default {
         scale: 'Scale',
         skew: 'Skew',
         matrix: 'Matrix',
-        change_deg: 'Change the deg'
     },
 }

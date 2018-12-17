@@ -23,7 +23,20 @@
   });
   export default {
     name: "slider",
-    props: ["min", "max", "value"],
+    props: {
+      min: {
+        default: 0
+      },
+      max: {
+        default: 100
+      },
+      value: {
+        default: 0
+      },
+      decimals: {
+        default: 0
+      }
+    },
     data() {
       return {
         // isMouseDown: false,
@@ -51,7 +64,14 @@
         if (this.maskWidth >= 200) {
           this.maskWidth = 200;
         }
-        let value = Math.ceil(this.maskWidth / this.unitVal + this.min);
+        let value = 0;
+        if (this.decimals == 0) {
+          value = Math.ceil(this.maskWidth / this.unitVal + this.min);
+        } else {
+          value = (this.maskWidth / this.unitVal + this.min).toFixed(
+            this.decimals
+          );
+        }
         this.$emit("input", value);
       }
     },

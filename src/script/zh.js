@@ -10,6 +10,5 @@ export default {
         scale: '缩放',
         skew: '扭曲',
         matrix: '矩阵',
-        change_deg: '改变角度'
     },
 }

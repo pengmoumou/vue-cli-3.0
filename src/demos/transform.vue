@@ -1,43 +1,394 @@
 <template>
   <div class="transform-main">
+    <!-- <ul>
+      <li v-for="(item,index) in transformBoxs" :key="index">
+        <transform-box :transformBox="item"></transform-box>
+      </li>
+    </ul> -->
     <div class="box-content box-mt transform-box">
       <p class="box-title">
         {{$t('transform.rotate')}}
       </p>
-      <div class="rotate-box">
-        <div class="deg-line">
-          <p>{{$t("transform.change_deg")}}</p>
-          <slider :min="0" :max="360" v-model="rotateDeg">
-            {{rotateDeg}} deg
-            <span slot="left">0 deg</span>
-            <span slot="right">360 deg</span>
-          </slider>
+      <div class="flex-box">
+        <div class="flex-box">
+          <p class="box-title">
+            2D
+          </p>
+          <div class="slider-line">
+            <p>rotate</p>
+            <slider :min="0" :max="360" v-model="aDeg">
+              {{aDeg}} deg
+              <span slot="left">0 deg</span>
+              <span slot="right">360 deg</span>
+            </slider>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:rotate('+aDeg+'deg)'">
+              A
+            </div>
+          </div>
         </div>
-        <div class="rotate-square" :style="'transform:rotate('+rotateDeg+'deg)'">
-          A
+        <div class="flex-box">
+          <p class="box-title">
+            3D
+          </p>
+          <div class="line-box">
+            <div class="slider-line">
+              <p>rotate</p>
+              <slider :min="0" :max="360" v-model="fDeg">
+                {{fDeg}} deg
+                <span slot="left">0 deg</span>
+                <span slot="right">360 deg</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>X</p>
+              <slider :max="1" v-model="fX" :decimals="2">
+                {{fX}}
+                <span slot="left">0</span>
+                <span slot="right">1</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Y</p>
+              <slider :max="1" v-model="fY" :decimals="2">
+                {{fY}}
+                <span slot="left">0</span>
+                <span slot="right">1</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Z</p>
+              <slider :max="1" v-model="fZ" :decimals="2">
+                {{fZ}}
+                <span slot="left">0</span>
+                <span slot="right">1</span>
+              </slider>
+            </div>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:rotate3d('+fX+','+fY+','+fZ+','+fDeg+'deg)'">
+              F
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="box-content box-mt transform-box">
-
+      <p class="box-title">
+        {{$t('transform.translate')}}
+      </p>
+      <div class="flex-box">
+        <div class="flex-box">
+          <p class="box-title">
+            2D
+          </p>
+          <div class="line-box">
+            <div class="slider-line">
+              <p>X</p>
+              <slider v-model="bX">
+                {{bX}}px
+                <span slot="left">0px</span>
+                <span slot="right">100px</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Y</p>
+              <slider v-model="bY">
+                {{bY}}px
+                <span slot="left">0px</span>
+                <span slot="right">100px</span>
+              </slider>
+            </div>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:translate('+bX+'px,'+bY+'px)'">
+              B
+            </div>
+          </div>
+        </div>
+        <div class="flex-box">
+          <p class="box-title">
+            3D
+          </p>
+          <div class="line-box">
+            <div class="slider-line">
+              <p>X</p>
+              <slider v-model="cX">
+                {{cX}}px
+                <span slot="left">0px</span>
+                <span slot="right">100px</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Y</p>
+              <slider v-model="cY">
+                {{cY}}px
+                <span slot="left">0px</span>
+                <span slot="right">100px</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Z</p>
+              <slider v-model="cZ">
+                {{cZ}}px
+                <span slot="left">0px</span>
+                <span slot="right">100px</span>
+              </slider>
+            </div>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:translate3d('+cX+'px,'+cY+'px,'+cZ+'px)'">
+              C
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-content box-mt transform-box">
+      <p class="box-title">
+        {{$t('transform.scale')}}
+      </p>
+      <div class="flex-box">
+        <div class="flex-box">
+          <p class="box-title">
+            2D
+          </p>
+          <div class="line-box">
+            <div class="slider-line">
+              <p>X</p>
+              <slider :max="2" v-model="dX" :decimals="2">
+                {{dX}}
+                <span slot="left">0</span>
+                <span slot="right">2</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Y</p>
+              <slider :max="2" v-model="dY" :decimals="2">
+                {{dY}}
+                <span slot="left">0</span>
+                <span slot="right">2</span>
+              </slider>
+            </div>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:scale('+dX+','+dY+')'">
+              D
+            </div>
+          </div>
+        </div>
+        <div class="flex-box">
+          <p class="box-title">
+            3D
+          </p>
+          <div class="line-box">
+            <div class="slider-line">
+              <p>X</p>
+              <slider :max="2" v-model="eX" :decimals="2">
+                {{eX}}
+                <span slot="left">0</span>
+                <span slot="right">2</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Y</p>
+              <slider :max="2" v-model="eY" :decimals="2">
+                {{eY}}
+                <span slot="left">0</span>
+                <span slot="right">2</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>Z</p>
+              <slider :max="10" v-model="eZ" :decimals="2">
+                {{eZ}}
+                <span slot="left">0</span>
+                <span slot="right">10</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>rotateX</p>
+              <slider :min="0" :max="360" v-model="eXDeg">
+                {{eXDeg}} deg
+                <span slot="left">0 deg</span>
+                <span slot="right">360 deg</span>
+              </slider>
+            </div>
+            <div class="slider-line">
+              <p>rotateY</p>
+              <slider :min="0" :max="360" v-model="eYDeg">
+                {{eYDeg}} deg
+                <span slot="left">0 deg</span>
+                <span slot="right">360 deg</span>
+              </slider>
+            </div>
+          </div>
+          <div class="square-box">
+            <div class="square" :style="'transform:scale3d('+eX+','+eY+','+eZ+') rotateX('+eXDeg+'deg) rotateY('+eYDeg+'deg)' ">
+              E
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-content box-mt transform-box">
+      <p class="box-title">
+        {{$t('transform.skew')}}
+      </p>
+      <div class="flex-box">
+        <div class="line-box">
+          <div class="slider-line">
+            <p>X</p>
+            <slider :min="0" :max="360" v-model="gXDeg">
+              {{gXDeg}} deg
+              <span slot="left">0 deg</span>
+              <span slot="right">360 deg</span>
+            </slider>
+          </div>
+          <div class="slider-line">
+            <p>Y</p>
+            <slider :min="0" :max="360" v-model="gYDeg">
+              {{gYDeg}} deg
+              <span slot="left">0 deg</span>
+              <span slot="right">360 deg</span>
+            </slider>
+          </div>
+        </div>
+        <div class="square-box">
+          <div class="square" :style="'transform:skew('+gXDeg+'deg,'+gYDeg+'deg)' ">
+            G
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-content box-mt transform-box">
+      <p class="box-title">
+        {{$t('transform.matrix')}}
+      </p>
+      <div class="flex-box">
+        <div class="flex-box">
+          <p class="box-title">
+            2D
+          </p>
+        </div>
+        <div class="flex-box">
+          <p class="box-title">
+            3D
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
   import Slider from "@/components/slider";
+  // import TransformBox from "@/components/transform_box";
   export default {
     name: "demo_transform",
     components: {
       Slider
+      // TransformBox
     },
     data() {
       return {
-        rotateDeg: 180
+        // transformBoxs: [],
+        aDeg: 180,
+        eXDeg: 0,
+        eYDeg: 0,
+        fDeg: 0,
+        gXDeg: 0,
+        gYDeg: 0,
+        bX: 0,
+        bY: 0,
+        cX: 0,
+        cY: 0,
+        cZ: 0,
+        dX: 1,
+        dY: 1,
+        eX: 1,
+        eY: 1,
+        eZ: 1,
+        fX: 0,
+        fY: 0,
+        fZ: 0
       };
     },
     computed: {},
     created() {
-      // this.changeRotateDeg(30);
+      // this.transformBoxs = [
+      //   {
+      //     title: "transform.rotate",
+      //     boxs: [
+      //       {
+      //         title: "2D",
+      //         lineBox: [
+      //           {
+      //             lable: "rotate",
+      //             max: 360,
+      //             value: this.aDeg,
+      //             unit: "deg",
+      //             showSlot: true,
+      //             showTips: true
+      //           }
+      //         ],
+      //         style: "transform:rotate(" + this.aDeg + "deg)",
+      //         square: "A"
+      //       },
+      //       {
+      //         title: "3D",
+      //         lineBox: [
+      //           {
+      //             lable: "rotate",
+      //             max: 360,
+      //             value: this.fDeg,
+      //             unit: "deg",
+      //             showSlot: true,
+      //             showTips: true
+      //           },
+      //           {
+      //             lable: "X",
+      //             max: 1,
+      //             value: this.fX,
+      //             unit: "",
+      //             decimals: 2,
+      //             showSlot: true,
+      //             showTips: true
+      //           },
+      //           {
+      //             lable: "Y",
+      //             max: 1,
+      //             value: this.fY,
+      //             unit: "",
+      //             decimals: 2,
+      //             showSlot: true,
+      //             showTips: true
+      //           },
+      //           {
+      //             lable: "Z",
+      //             max: 1,
+      //             value: this.fZ,
+      //             unit: "",
+      //             decimals: 2,
+      //             showSlot: true,
+      //             showTips: true
+      //           }
+      //         ],
+      //         style:
+      //           "transform:rotate3d(" +
+      //           this.fX +
+      //           "," +
+      //           this.fY +
+      //           "," +
+      //           this.fZ +
+      //           "," +
+      //           this.fDeg +
+      //           "deg)",
+      //         square: "F"
+      //       }
+      //     ]
+      //   }
+      // ];
     },
     mounted() {},
     methods: {}
@@ -46,27 +397,39 @@
 
 <style lang="scss">
   .transform-main {
+    padding-bottom: 50px;
     .transform-box {
       min-height: 100px;
-      padding: 20px;
+      padding: 0 20px;
       .box-title {
         text-align: center;
         font-size: 18px;
+        padding: 15px 0;
+        border-bottom: solid 1px $light-color;
       }
-      .rotate-box {
+      .slider-line {
+        margin: 30px;
+        align-self: center;
         display: flex;
-        // justify-content: space-around;
-        .deg-line {
-          align-self: center;
-          display: flex;
-        }
-        .rotate-square {
-          margin: 50px;
-          width: 50px;
-          height: 50px;
-          background: $theme-color;
-          // transform: rotate(0deg);
-        }
+      }
+      .flex-box {
+        display: flex;
+        justify-content: space-around;
+      }
+      .square-box {
+        margin: 25px;
+        width: 200px;
+        height: 200px;
+        border: solid 1px $light-color;
+        transform-style: preserve-3d;
+        perspective: 500;
+        perspective-origin: 50% 50%;
+      }
+      .square {
+        margin: 25px;
+        width: 50px;
+        height: 50px;
+        background: $theme-color;
       }
     }
   }
