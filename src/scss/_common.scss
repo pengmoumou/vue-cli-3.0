@@ -3,6 +3,8 @@
     padding:0;
 }
 body{
+    color: $dark-color;
+    font-size: 14px;
     width:100%;
     height: 100%;
     user-select: none;
@@ -14,4 +16,8 @@ ul,ol,li {
 a {
     text-decoration: none;
     outline: 0
+}
+.icon{
+    width:50px;
+    height: 50px;
 }

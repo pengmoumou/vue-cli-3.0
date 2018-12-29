@@ -1,10 +1,10 @@
 <template>
-  <div class="index-main">
+  <div class="frame-main">
     <div class="box-content box-mt">
       <ul class="demo-list-ul">
-        <li class="demo-list-li" v-for="(item,index) in demoLinks" :key="index"
+        <li class="demo-list-li" v-for="(item,index) in frameLinks" :key="index"
           @click="pushRouter(item.router)">
-          <div class="li-label">{{$t(item.label)}}</div>
+          <div class="li-label">{{item.label}}</div>
           <div><img :src="item.img" class="li-img"></div>
         </li>
       </ul>
@@ -15,21 +15,11 @@
   export default {
     data() {
       return {
-        demoLinks: [
+        frameLinks: [
           {
-            label: "demo.css",
+            label: "Vuetify",
             img: require("@a/duck.png"),
-            router: "/css"
-          },
-          {
-            label: "demo.plugin",
-            img: require("@a/duck.png"),
-            router: "/plugin"
-          },
-          {
-            label: "demo.frame",
-            img: require("@a/duck.png"),
-            router: "/frame"
+            router: "/frame/vuetify"
           }
         ]
       };
@@ -43,6 +33,6 @@
 </script>
 
 <style lang="scss">
-  .index-main {
+  .frame-main {
   }
 </style>

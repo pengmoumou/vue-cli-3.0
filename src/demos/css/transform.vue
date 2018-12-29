@@ -282,8 +282,8 @@
   </div>
 </template>
 <script>
-  import Slider from "@/components/slider";
-  // import TransformBox from "@/components/transform_box";
+  import Slider from "@c/slider";
+  // import TransformBox from "@c/transform_box";
   export default {
     name: "demo_transform",
     components: {
@@ -316,79 +316,7 @@
     },
     computed: {},
     created() {
-      // this.transformBoxs = [
-      //   {
-      //     title: "transform.rotate",
-      //     boxs: [
-      //       {
-      //         title: "2D",
-      //         lineBox: [
-      //           {
-      //             lable: "rotate",
-      //             max: 360,
-      //             value: this.aDeg,
-      //             unit: "deg",
-      //             showSlot: true,
-      //             showTips: true
-      //           }
-      //         ],
-      //         style: "transform:rotate(" + this.aDeg + "deg)",
-      //         square: "A"
-      //       },
-      //       {
-      //         title: "3D",
-      //         lineBox: [
-      //           {
-      //             lable: "rotate",
-      //             max: 360,
-      //             value: this.fDeg,
-      //             unit: "deg",
-      //             showSlot: true,
-      //             showTips: true
-      //           },
-      //           {
-      //             lable: "X",
-      //             max: 1,
-      //             value: this.fX,
-      //             unit: "",
-      //             decimals: 2,
-      //             showSlot: true,
-      //             showTips: true
-      //           },
-      //           {
-      //             lable: "Y",
-      //             max: 1,
-      //             value: this.fY,
-      //             unit: "",
-      //             decimals: 2,
-      //             showSlot: true,
-      //             showTips: true
-      //           },
-      //           {
-      //             lable: "Z",
-      //             max: 1,
-      //             value: this.fZ,
-      //             unit: "",
-      //             decimals: 2,
-      //             showSlot: true,
-      //             showTips: true
-      //           }
-      //         ],
-      //         style:
-      //           "transform:rotate3d(" +
-      //           this.fX +
-      //           "," +
-      //           this.fY +
-      //           "," +
-      //           this.fZ +
-      //           "," +
-      //           this.fDeg +
-      //           "deg)",
-      //         square: "F"
-      //       }
-      //     ]
-      //   }
-      // ];
+      
     },
     mounted() {},
     methods: {}
@@ -413,7 +341,6 @@
         display: flex;
       }
       .flex-box {
-        display: flex;
         justify-content: space-around;
       }
       .square-box {

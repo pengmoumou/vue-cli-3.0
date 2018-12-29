@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-  import Slider from "@/components/slider";
+  import Slider from "@c/slider";
   export default {
     name: "transform_box",
     components: {

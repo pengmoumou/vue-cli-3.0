@@ -6,21 +6,19 @@
 </template>
 
 <script>
-import HeadComp from '@/components/head_comp'
-export default {
-  name: 'app',
-  components:{
-    HeadComp
-  }
-}
+  import HeadComp from "@c/head_comp";
+  export default {
+    name: "app",
+    components: {
+      HeadComp
+    }
+  };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color:$dark-color;
-  font-size:14px;
-}
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 </style>

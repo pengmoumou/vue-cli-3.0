@@ -9,3 +9,31 @@
     background: #fff;
     border-radius: 5px;
 }
+.flex-box {
+    display: flex;
+}
+.demo-box {
+    min-height: 100px;
+    padding: 20px;
+}
+.demo-list-ul {
+    color: $theme-color;
+    padding: 0 10px;
+    .demo-list-li {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: $light-color solid 1px;
+        cursor: pointer;
+        .li-label {
+        padding: 0 30px;
+        align-self: center;
+        }
+        .li-img {
+        // width:100px;
+        height: 100px;
+        }
+    }
+    .demo-list-li:last-child {
+        border-bottom: none;
+    }
+}

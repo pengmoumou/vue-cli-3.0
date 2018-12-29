@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import cssRouter from '@r/css'
+import pluginRouter from '@r/plugin'
+import frameRouter from '@r/frame'
 
 Vue.use(Router)
 
@@ -7,24 +10,12 @@ let routes = {
     routes: [
         {
             path: '/',
-            name: 'demo_index',
-            component: resolve => require(['../demos/index'], resolve),
+            name: 'demo',
+            component: resolve => require(['@d/index'], resolve),
         },
-        {
-            path: '/demo/animation',
-            name: 'demo_animation',
-            component: resolve => require(['../demos/animation'], resolve),
-        },
-        {
-            path: '/demo/transform',
-            name: 'demo_transform',
-            component: resolve => require(['../demos/transform'], resolve),
-        },
-        {
-            path: '/demo/transition',
-            name: 'demo_transition',
-            component: resolve => require(['../demos/transition'], resolve),
-        },
+        ...cssRouter,
+        ...pluginRouter,
+        ...frameRouter,
         {
             path: '*',
             redirect: '/'
