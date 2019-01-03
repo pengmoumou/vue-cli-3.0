@@ -8,7 +8,8 @@ export default {
         transition: 'Transition',
         transform: 'Transform',
         animation: 'Animation',
-        canvas: 'Canvas'
+        canvas: 'Canvas',
+        gradient:'Gradient'
     },
     transform: {
         rotate: 'Rotate',

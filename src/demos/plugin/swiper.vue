@@ -22,6 +22,27 @@
                 <div class="swiper-pagination" v-if="imgArr.length>1"></div>
             </div>
         </div>
+        <div class="swiper-box">
+            <ul class="tabs flex-box">
+                <li class="tab" v-for="(item,index) in tabArr" :class="activeIndex1==index?'active':''" :key="index" @click="chooseTab(index)">{{item}}</li>
+            </ul>
+            <div class="swiper-container" id="swiper4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item,index) in tabArr" :key="index" ref="slide">
+                        {{item}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-box">
+            <div class="swiper-container" id="swiper5">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item,index) in tabArr" :key="index">
+                        {{item}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="box-content box-mt flex-box">
         <div class="swiper-box">
@@ -44,7 +65,10 @@
     data() {
       return {
           activeIndex:0,
-          imgArr:[require('@a/duck.png'),require('@a/duck.png'),require('@a/duck.png')]
+          activeIndex1:0,
+          imgArr:[require('@a/duck.png'),require('@a/duck.png'),require('@a/duck.png')],
+          tabArr:['A','B','C','D','E','F'],
+          mySwiper1:null
       };
     },
     mounted(){
@@ -66,19 +90,42 @@
             autoplay: true,
             autoHeight: true,
         });
+        var that=this;
         var mySwiper=new Swiper ('#swiper3', {
             direction: 'horizontal',
             autoHeight: true, 
             on:{
                 slideChangeTransitionEnd(){
-                    this.activeIndex=mySwiper.activeIndex;
-                    console.log(mySwiper.activeIndex)
+                    that.activeIndex=mySwiper.activeIndex;
+                    // console.log(mySwiper.activeIndex)
                 }
             },
             pagination: {
                 el: '.swiper-pagination',
             },
-        })        
+        });
+        this.mySwiper1=new Swiper ('#swiper4', {
+            direction: 'horizontal',
+            autoHeight: true, 
+            on:{
+                slideChangeTransitionEnd(){
+                    that.activeIndex1=that.mySwiper1.activeIndex;
+                    // console.log(mySwiper1.activeIndex)
+                }
+            },
+        });
+        new Swiper ('#swiper5', {
+            direction: 'horizontal',
+            autoHeight: true,
+            slidesPerView:'auto',
+        });
+        console.log(this.$ref['slide'])
+    },
+    methods:{
+        chooseTab(index){
+            this.activeIndex1=index;
+            this.mySwiper1.slideToLoop(index, 1000, false);
+        }
     }
   };
 </script>
@@ -90,17 +137,6 @@
          border:1px $theme-color solid;
          width:200px;
          margin:20px; 
-        #swiper2,#swiper3{
-            &.swiper-container {
-                height: 200px;
-                // margin:10px;
-                .swiper-slide{
-                    img{
-                        width:200px;
-                    } 
-                }
-            }
-        }
         #swiper1{
             &.swiper-container {
                 width: 100%;
@@ -123,6 +159,46 @@
                 }
             }
         }
+        #swiper2,#swiper3{
+            &.swiper-container {
+                height: 200px;
+                // margin:10px;
+                .swiper-slide{
+                    img{
+                        width:200px;
+                    } 
+                }
+            }
+        }
+        #swiper4{
+            padding-top:50px;
+            text-align: center;
+        }
+        #swiper5{
+            &.swiper-container {
+                width: 100%;
+                min-height: 100px;
+                .swiper-slide{
+                    width:50%;
+                    border:1px $theme-color solid;
+                    position: relative;
+                }
+            }
+        }
+        
+        .tabs{
+            justify-content: space-between;
+            .tab{
+                padding: 5px 10px;
+                border-radius: 3px;
+                background: rgba($light-color, 0.7);
+                box-shadow: 1px 1px 2px $theme-color;
+            }
+            .tab.active{
+                color: $theme-color;
+            }
+        }
+        
     }
   }
 </style>

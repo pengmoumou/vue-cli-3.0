@@ -1,6 +1,6 @@
 <template>
   <div class="head-main">
-    <div class="logo-box">
+    <div class="logo-box" @click="toHome">
       <img src="@a/duck.png" class="logo-img">
     </div>
     <div class="lang-box" @click="changelang">
@@ -29,6 +29,9 @@
       }
     },
     methods:{
+      toHome(){
+        this.$router.push({ path: '/' });
+      },
       changelang(){
         if(this.lang=='zh')
         {

@@ -9,6 +9,7 @@ export default {
         transform: '变形',
         animation: '动画',
         canvas: '画布',
+        gradient:'渐变'
     },
     transform: {
         rotate: '旋转',

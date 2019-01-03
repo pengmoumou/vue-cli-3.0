@@ -37,8 +37,8 @@
             router: "/css/canvas"
           },
           {
-            label: "gradient",
-            img: require("@a/css/animation_img.jpg"),
+            label: "css.gradient",
+            img: require("@a/css/gradient_img.jpg"),
             router: "/css/gradient"
           }
         ]
