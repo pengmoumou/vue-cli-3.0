@@ -51,6 +51,10 @@
     color: $theme-color;
     width: 1200px;
     margin: 0 auto;
+    @media screen and (max-width: $mobile){
+      width:100%;
+      margin:0;
+    }
     background: #fff;
     display: flex;
     justify-content: space-between;

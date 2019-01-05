@@ -29,5 +29,14 @@ export default [
         name: 'css_gradient',
         component: resolve => require(['@d/css/gradient'], resolve),
     },
-    
+    {
+        path: '/css/pseudo_element',
+        name: 'css_pseudo_element',
+        component: resolve => require(['@d/css/pseudo_element'], resolve),
+    },
+    {
+        path: '/css/pseudo_class',
+        name: 'css_pseudo_class',
+        component: resolve => require(['@d/css/pseudo_class'], resolve),
+    },
 ]

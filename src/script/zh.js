@@ -9,7 +9,9 @@ export default {
         transform: '变形',
         animation: '动画',
         canvas: '画布',
-        gradient:'渐变'
+        gradient:'渐变',
+        pseudo_element:'伪元素',
+        pseudo_class:'伪类',
     },
     transform: {
         rotate: '旋转',
@@ -17,6 +19,12 @@ export default {
         scale: '缩放',
         skew: '扭曲',
         matrix: '矩阵',
+    },
+    canvas:{
+        start:'开始游戏',
+        end:'游戏结束',
+        continue:'继续游戏',
+        stop:'暂停游戏',
     },
     frame:{
         toolbar:'工具栏',

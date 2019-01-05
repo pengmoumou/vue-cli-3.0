@@ -119,7 +119,7 @@
             autoHeight: true,
             slidesPerView:'auto',
         });
-        console.log(this.$ref['slide'])
+        // console.log(this.$ref['slide'])
     },
     methods:{
         chooseTab(index){

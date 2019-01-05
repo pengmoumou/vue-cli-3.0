@@ -40,6 +40,16 @@
             label: "css.gradient",
             img: require("@a/css/gradient_img.jpg"),
             router: "/css/gradient"
+          },
+          {
+            label: "css.pseudo_element",
+            img: require("@a/css/gradient_img.jpg"),
+            router: "/css/pseudo_element"
+          },
+          {
+            label: "css.pseudo_class",
+            img: require("@a/css/gradient_img.jpg"),
+            router: "/css/pseudo_class"
           }
         ]
       };

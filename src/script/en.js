@@ -9,7 +9,9 @@ export default {
         transform: 'Transform',
         animation: 'Animation',
         canvas: 'Canvas',
-        gradient:'Gradient'
+        gradient:'Gradient',
+        pseudo_element:'Pseudo Element',
+        pseudo_class:'Pseudo Class',
     },
     transform: {
         rotate: 'Rotate',
@@ -17,6 +19,12 @@ export default {
         scale: 'Scale',
         skew: 'Skew',
         matrix: 'Matrix',
+    },
+    canvas:{
+        start:'Start Game',
+        end:'End Game',
+        continue:'Continue',
+        stop:'Stop',
     },
     frame:{
         toolbar:'Toolbar',
