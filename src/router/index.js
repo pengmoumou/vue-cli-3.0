@@ -13,6 +13,11 @@ let routes = {
             name: 'demo',
             component: resolve => require(['@d/index'], resolve),
         },
+        {
+            path: '/comps',
+            name: 'comps',
+            component: resolve => require(['@d/comps'], resolve),
+        },
         ...cssRouter,
         ...pluginRouter,
         ...frameRouter,
@@ -24,5 +29,10 @@ let routes = {
 }
 
 const router = new Router(routes);
+
+// 跳转后返回顶部
+router.afterEach((to, from, next) => {
+    window.scrollTo(0, 0);
+})
 
 export default router

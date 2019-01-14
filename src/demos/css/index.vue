@@ -50,6 +50,11 @@
             label: "css.pseudo_class",
             img: require("@a/css/gradient_img.jpg"),
             router: "/css/pseudo_class"
+          },
+          {
+            label: "css.scroll",
+            img: require("@a/css/gradient_img.jpg"),
+            router: "/css/scroll"
           }
         ]
       };

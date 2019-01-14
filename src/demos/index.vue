@@ -30,6 +30,11 @@
             label: "demo.frame",
             img: require("@a/duck.png"),
             router: "/frame"
+          },
+          {
+            label: "demo.comps",
+            img: require("@a/duck.png"),
+            router: "/comps"
           }
         ]
       };

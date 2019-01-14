@@ -39,4 +39,9 @@ export default [
         name: 'css_pseudo_class',
         component: resolve => require(['@d/css/pseudo_class'], resolve),
     },
+    {
+        path: '/css/scroll',
+        name: 'css_scroll',
+        component: resolve => require(['@d/css/scroll'], resolve),
+    },
 ]

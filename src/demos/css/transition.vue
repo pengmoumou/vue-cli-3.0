@@ -3,8 +3,9 @@
     <div class="box-content box-mt demo-box flex-box">
       <p class="showNum">isShow:{{isShow}}</p>
       <transition-group v-if="transList.length > 0" name="trans-list" tag="ul" class="button-ul">
-        <li class="button-li" v-for="item in transList" :key="item.value"><button
-            @click="isShow==item.value?isShow=0:isShow=item.value">{{item.text}}</button></li>
+        <li class="button-li" v-for="item in transList" :key="item.value">
+          <button @click="isShow==item.value?isShow=0:isShow=item.value">{{item.text}}</button>
+        </li>
       </transition-group>
       <ul class="show-ul">
         <li class="show-li" v-for="(item,index) in transList" :key="index">

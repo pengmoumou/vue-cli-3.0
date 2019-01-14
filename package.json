@@ -24,7 +24,8 @@
     "sass-loader": "^7.1.0",
     "vue-i18n": "^8.4.0",
     "vue-router": "^3.0.2",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "webpack-dev-server": "> = 3.1.11"
   },
   "eslintConfig": {
     "root": true,
