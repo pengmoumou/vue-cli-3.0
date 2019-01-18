@@ -44,4 +44,9 @@ export default [
         name: 'css_scroll',
         component: resolve => require(['@d/css/scroll'], resolve),
     },
+    {
+        path: '/css/svg',
+        name: 'css_svg',
+        component: resolve => require(['@d/css/show_svg'], resolve),
+    },
 ]

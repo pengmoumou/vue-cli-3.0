@@ -47,7 +47,7 @@
     methods: {}
   };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   @import "~swiper/dist/css/swiper.css";
   .banner_swiper {
     .swiper-container {

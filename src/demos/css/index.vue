@@ -55,6 +55,11 @@
             label: "css.scroll",
             img: require("@a/css/gradient_img.jpg"),
             router: "/css/scroll"
+          },
+          {
+            label: "css.svg",
+            img: require("@a/css/gradient_img.jpg"),
+            router: "/css/svg"
           }
         ]
       };

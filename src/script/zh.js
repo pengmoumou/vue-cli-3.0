@@ -15,6 +15,7 @@ export default {
         pseudo_element: '伪元素',
         pseudo_class: '伪类',
         scroll: '滚动',
+        svg: '可缩放矢量图形'
     },
     transform: {
         rotate: '旋转',
@@ -24,15 +25,23 @@ export default {
         matrix: '矩阵',
     },
     canvas: {
-        start: '开始游戏',
-        end: '游戏结束',
-        continue: '继续游戏',
-        stop: '暂停游戏',
     },
     frame: {
         toolbar: '工具栏',
         navigation: '导航',
         footer: '页脚'
+    },
+    btn: {
+        start: '开始游戏',
+        continue: '继续游戏',
+        stop: '暂停游戏',
+        restart: '重新开始',
+    },
+    text: {
+        score: '得分',
+        end: '游戏结束',
+        congratulation: '恭喜你',
+        restart: '游戏已结束，请重新开始游戏'
     },
     error: {
         canvas: '你的浏览器不支持canvas,请升级你的浏览器'
