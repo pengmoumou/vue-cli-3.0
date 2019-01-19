@@ -4,30 +4,37 @@
       <head-demo :isShowMenu="isShowMenu" @showMenu="showMenu" v-model="activeRouter"></head-demo>
     </div>
     <div class="box-content box-mt demo-box">
+
     </div>
+    <div class="box-content box-mt demo-box">
+
+    </div>
+    <foot-demo :class="{fixed:isFixed}" class="box-mt" @eventGetHeight="getFooterHeight"></foot-demo>
   </div>
 </template>
 <script>
-  import HeadDemo from "@c/head_demo";
+  import HeadDemo from "./components/head_demo";
+  import FootDemo from "./components/foot_demo";
   export default {
     name: "demo_comps",
     components: {
-      HeadDemo
+      HeadDemo,
+      FootDemo
     },
     data() {
       return {
+        isFixed: true,
+        footerHeight: 0,
         isShowMenu: true,
         activeRouter: "/"
       };
     },
-    created() {
-      this.isOver();
-    },
     mounted() {
-      let that = this;
-      window.onresize = function windowResize() {
-        that.isOver();
-      };
+      this.isOver();
+      window.addEventListener("resize", this.isOver);
+    },
+    beforeDestroy() {
+      window.removeEventListener("resize", this.isOver);
     },
     methods: {
       isOver() {
@@ -38,6 +45,26 @@
           this.isShowMenu = true;
         }
         // console.log(this.isShowMenu);
+        var bodyHeight = 0;
+        if (this.isFixed) {
+          bodyHeight = Number(this.$el.offsetHeight) + this.footerHeight;
+        } else {
+          bodyHeight = Number(this.$el.offsetHeight);
+        }
+        // console.log("bodyHeight " + bodyHeight + "footer " + this.footerHeight);
+        var winHeight = window.innerHeight;
+        // console.log("winHeight " + winHeight);
+        if (bodyHeight > winHeight) {
+          // console.log("scroll");
+          this.isFixed = false;
+        } else {
+          // console.log("fixed");
+          this.isFixed = true;
+        }
+      },
+      getFooterHeight(val) {
+        this.footerHeight = Number(val);
+        // console.log("footer " + val);
       },
       showMenu() {
         this.isShowMenu = !this.isShowMenu;
@@ -54,5 +81,9 @@
 
 <style lang="scss">
   .comps-main {
+    .fixed {
+      position: fixed;
+      bottom: 0;
+    }
   }
 </style>

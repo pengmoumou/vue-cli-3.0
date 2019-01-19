@@ -53,7 +53,7 @@
       width: 100%;
       margin: 0;
     }
-    background: #fff;
+    background: $white-color;
     display: flex;
     justify-content: space-between;
     .lang-box {

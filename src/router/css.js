@@ -40,11 +40,6 @@ export default [
         component: resolve => require(['@d/css/pseudo_class'], resolve),
     },
     {
-        path: '/css/scroll',
-        name: 'css_scroll',
-        component: resolve => require(['@d/css/scroll'], resolve),
-    },
-    {
         path: '/css/svg',
         name: 'css_svg',
         component: resolve => require(['@d/css/show_svg'], resolve),

@@ -82,7 +82,8 @@
       </div>
       <div class="cir-content">
         <div class="hover-title">技术优势</div>
-        <div class="cir-hover" v-for="(item,index) in hoverArr" :key="index"  @mouseover="overShow(index+1)">{{item}}</div>
+        <div class="cir-hover" v-for="(item,index) in hoverArr" :key="index"
+          @mouseover="overShow(index+1)">{{item}}</div>
       </div>
     </div>
     <div class="box-content box-mt transform-box">
@@ -323,23 +324,28 @@
         fX: 0,
         fY: 0,
         fZ: 0,
-        cirDeg:0,
-        preCirDeg:0,
-        hoverArr:['智能合约','AI+VR技术','价值互联网','通证激励体系','共识机制-POW','跨链交易','多链交互'],
+        cirDeg: 0,
+        preCirDeg: 0,
+        hoverArr: [
+          "智能合约",
+          "AI+VR技术",
+          "价值互联网",
+          "通证激励体系",
+          "共识机制-POW",
+          "跨链交易",
+          "多链交互"
+        ]
       };
     },
     computed: {},
-    created() {
-      
-    },
-    mounted() {
-    },
+    created() {},
+    mounted() {},
 
     methods: {
-      overShow(val){
-        this.preCirDeg=this.cirDeg;
-        this.cirDeg=val*(360/this.hoverArr.length);
-      },
+      overShow(val) {
+        this.preCirDeg = this.cirDeg;
+        this.cirDeg = val * (360 / this.hoverArr.length);
+      }
     }
   };
 </script>
@@ -380,30 +386,30 @@
         background: $theme-color;
       }
     }
-    .cir-box{
-       background:$dark_color;
-       color:#fff;
-       position:relative;
-       .cir{
-        width:100%;
+    .cir-box {
+      background: $dark_color;
+      color: $white-color;
+      position: relative;
+      .cir {
+        width: 100%;
         height: 500px;
-        background:url('~@a/css/cir_rotate.png') center no-repeat;
+        background: url("~@a/css/cir_rotate.png") center no-repeat;
         background-size: 500px 500px;
-        transition: .5s ease-in-out;
+        transition: 0.5s ease-in-out;
       }
-     
-      .cir-content{
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
+
+      .cir-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 500px;
-        .hover-title{
-          position:absolute;
+        .hover-title {
+          position: absolute;
           text-align: center;
-          top:300px;
-          left:570px;
-          font-size:18px;
+          top: 300px;
+          left: 570px;
+          font-size: 18px;
         }
       }
     }

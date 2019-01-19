@@ -76,8 +76,9 @@
         let itemValue = this.penguinArr[n];
         // console.log(index + "=>" + itemValue);
         let className = "active" + itemValue;
+
         document
-          .getElementsByClassName("penguin-box")
+          .getElementsByClassName("penguin-box") // eslint-disable-next-line
           [index].classList.add(className);
         this.clickArr.push(itemValue);
         if (itemValue == 9) {

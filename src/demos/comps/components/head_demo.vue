@@ -42,7 +42,7 @@
 <style lang="scss">
   .head-demo {
     width: 100%;
-    background: #fff;
+    background: $white-color;
     display: flex;
     justify-content: space-between;
     .menu-box {

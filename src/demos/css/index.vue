@@ -33,7 +33,7 @@
           },
           {
             label: "css.canvas",
-            img: require("@a/css/animation_img.jpg"),
+            img: require("@a/css/canvas_img.jpg"),
             router: "/css/canvas"
           },
           {
@@ -43,22 +43,17 @@
           },
           {
             label: "css.pseudo_element",
-            img: require("@a/css/gradient_img.jpg"),
+            img: require("@a/css/pseudo_element_img.jpg"),
             router: "/css/pseudo_element"
           },
           {
             label: "css.pseudo_class",
-            img: require("@a/css/gradient_img.jpg"),
+            img: require("@a/css/pseudo_class_img.jpg"),
             router: "/css/pseudo_class"
           },
           {
-            label: "css.scroll",
-            img: require("@a/css/gradient_img.jpg"),
-            router: "/css/scroll"
-          },
-          {
             label: "css.svg",
-            img: require("@a/css/gradient_img.jpg"),
+            img: require("@a/css/svg_img.jpg"),
             router: "/css/svg"
           }
         ]

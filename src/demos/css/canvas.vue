@@ -126,7 +126,7 @@
   .canvas-main {
     #snake {
       box-shadow: 0 5px 40px $theme-color;
-      background: #fff;
+      background: $white-color;
     }
   }
 </style>
