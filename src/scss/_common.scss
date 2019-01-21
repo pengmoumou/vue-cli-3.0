@@ -35,3 +35,15 @@ button{
     border: none;
     box-shadow: 1px 1px 2px $theme-color;
   }
+.white-btn{
+    background:$white-color;
+}
+  .grade-box {
+    padding: 5px 10px;
+    border: 1px solid $theme-color;
+    margin-left: 50px;
+    .score {
+      color: $theme-color;
+      padding-left: 20px;
+    }
+  }

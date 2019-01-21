@@ -37,12 +37,16 @@ export default {
         continue: 'Continue',
         stop: 'Stop',
         restart: 'Restart',
+        slowly: 'Slowly',
+        normal: 'Normal',
+        quickly: 'Quickly'
     },
     text: {
         score: 'Score',
         end: 'End Game',
         congratulation: 'Congratulation to you',
-        restart: 'The game is over. Please restart the game'
+        restart: 'The game is over. Please restart the game',
+        speed: 'Speed'
     },
     error: {
         canvas: 'Canvas is not supported in your browser. Please upgrade your browser'

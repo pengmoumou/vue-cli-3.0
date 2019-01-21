@@ -36,12 +36,16 @@ export default {
         continue: '继续游戏',
         stop: '暂停游戏',
         restart: '重新开始',
+        slowly: '慢',
+        normal: '正常',
+        quickly: '快'
     },
     text: {
         score: '得分',
         end: '游戏结束',
         congratulation: '恭喜你',
-        restart: '游戏已结束，请重新开始游戏'
+        restart: '游戏已结束，请重新开始游戏',
+        speed: '速度'
     },
     error: {
         canvas: '你的浏览器不支持canvas,请升级你的浏览器'
