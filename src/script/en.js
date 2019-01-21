@@ -46,7 +46,11 @@ export default {
         end: 'End Game',
         congratulation: 'Congratulation to you',
         restart: 'The game is over. Please restart the game',
-        speed: 'Speed'
+        speed: 'Speed',
+        circle_num: 'Number of initial circles'
+    },
+    placeholder: {
+        circle_num: 'Please enter an integer of 1-100'
     },
     error: {
         canvas: 'Canvas is not supported in your browser. Please upgrade your browser'

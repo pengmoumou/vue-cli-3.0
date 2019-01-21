@@ -45,7 +45,11 @@ export default {
         end: '游戏结束',
         congratulation: '恭喜你',
         restart: '游戏已结束，请重新开始游戏',
-        speed: '速度'
+        speed: '速度',
+        circle_num: '初始圆的数量'
+    },
+    placeholder: {
+        circle_num: '请输入1-100的整数'
     },
     error: {
         canvas: '你的浏览器不支持canvas,请升级你的浏览器'
