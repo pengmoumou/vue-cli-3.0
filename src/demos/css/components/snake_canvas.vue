@@ -88,7 +88,11 @@
             break;
           }
         }
-        ev.preventDefault();
+        if (that.btnVal == "btn.stop") {
+          // console.log("btn:" + that.btnVal);
+          //将同时阻止页面中所有键盘默认的点击事件
+          ev.preventDefault();
+        }
       };
     },
     methods: {

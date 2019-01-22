@@ -22,7 +22,7 @@
         w: null,
         h: null,
         current_circle: null,
-        circle_num: ""
+        circle_num: 10
       };
     },
     mounted() {
@@ -40,13 +40,15 @@
       that.current_circle = new Circle(0, 0);
       // console.log(that.current_circle);
       window.addEventListener("load", that.init());
-      window.onmousemove = function(e) {
+      // window.onmousemove = function(e) {
+      that.canvas_circle.onmousemove = function(e) {
         e = e || window.event;
         // console.log(e);
         that.current_circle.x = e.offsetX;
         that.current_circle.y = e.offsetY;
       };
-      window.onmouseout = function() {
+      // window.onmouseout = function() {
+      that.canvas_circle.onmouseout = function() {
         that.current_circle.x = null;
         that.current_circle.y = null;
       };
@@ -54,11 +56,12 @@
     methods: {
       init() {
         if (
-          !this.circle_num ||
+          !Number(this.circle_num) ||
           Number(this.circle_num) > 100 ||
           Number(this.circle_num < 1)
         ) {
           this.circle_num = "";
+          alert(this.$t("placeholder.circle_num"));
           console.log("Restart failure");
           return;
         }

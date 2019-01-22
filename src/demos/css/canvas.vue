@@ -6,16 +6,21 @@
     <div class="box-content box-mt">
       <circle-mouse></circle-mouse>
     </div>
+    <div class="box-content box-mt">
+      <globule-canvas></globule-canvas>
+    </div>
+    <div class="box-content box-mt">
+      <brush-canvas></brush-canvas>
+    </div>
     <div class="box-content box-mt demo-box">
-      <canvas id="rect" width="500" height="500">
-        <p>{{$t('error.canvas')}}</p>
-      </canvas>
     </div>
   </div>
 </template>
 <script>
   import SnakeCanvas from "./components/snake_canvas";
   import CircleMouse from "./components/circle_mouse_canvas";
+  import GlobuleCanvas from "./components/globule_canvas";
+  import BrushCanvas from "./components/brush_canvas";
   export default {
     name: "demo_canvas",
     data() {
@@ -23,7 +28,9 @@
     },
     components: {
       SnakeCanvas,
-      CircleMouse
+      CircleMouse,
+      GlobuleCanvas,
+      BrushCanvas
     },
     mounted() {},
     methods: {}
