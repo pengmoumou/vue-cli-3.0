@@ -17,7 +17,7 @@
 <script>
   import PenguinInstance from "./components/penguin_instance";
   export default {
-    name: "demo_pseudo_class",
+    name: "css_pseudo_class",
     data() {
       return {};
     },

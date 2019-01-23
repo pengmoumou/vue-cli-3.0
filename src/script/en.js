@@ -5,6 +5,7 @@ export default {
         frame: 'Frame',
         instance: 'Instance',
         comps: 'Components',
+        arithmetic: 'Arithmetic'
     },
     css: {
         transition: 'Transition',
@@ -26,6 +27,9 @@ export default {
     },
     canvas: {
 
+    },
+    arithmetic: {
+        sort: 'Sort'
     },
     frame: {
         toolbar: 'Toolbar',

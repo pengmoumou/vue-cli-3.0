@@ -18,7 +18,7 @@
 </template>
 <script>
   export default {
-    name: "demo_svg",
+    name: "css_svg",
     data() {
       return {};
     },

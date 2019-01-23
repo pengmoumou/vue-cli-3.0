@@ -2,7 +2,8 @@
   <div class="transition-main">
     <div class="box-content box-mt demo-box flex-box">
       <p class="showNum">isShow:{{isShow}}</p>
-      <transition-group v-if="transList.length > 0" name="trans-list" tag="ul" class="button-ul">
+      <transition-group v-if="transList.length > 0" name="trans-list" tag="ul"
+        class="button-ul">
         <li class="button-li" v-for="item in transList" :key="item.value">
           <button @click="isShow==item.value?isShow=0:isShow=item.value">{{item.text}}</button>
         </li>
@@ -17,20 +18,20 @@
     </div>
     <div class="box-content box-mt demo-box">
       <div class="angle-box" @click="toSort(sort)">
-          点击这里排序
-          <i class="angle_top" :class="sort=='asc'?'sort-color':'default-color'"></i>
-          <i class="angle_bottom" :class="sort=='desc'?'sort-color':'default-color'"></i>
+        点击这里排序
+        <i class="angle_top" :class="sort=='asc'?'sort-color':'default-color'"></i>
+        <i class="angle_bottom" :class="sort=='desc'?'sort-color':'default-color'"></i>
       </div>
     </div>
   </div>
 </template>
 <script>
   export default {
-    name: "demo_transition",
+    name: "css_transition",
     data() {
       return {
         isShow: 0,
-        sort:'',
+        sort: "",
         transList: [
           {
             value: 1,
@@ -45,23 +46,23 @@
         ]
       };
     },
-    methods:{
-      toSort(val){
-        console.log(val)
-        if(val==''){
-          val='asc';
-        }        
-        if(val=='asc'){
-          this.transList.sort(function (a, b){
+    methods: {
+      toSort(val) {
+        console.log(val);
+        if (val == "") {
+          val = "asc";
+        }
+        if (val == "asc") {
+          this.transList.sort(function(a, b) {
             return a.value - b.value;
-          })
-          this.sort='desc';
-        }else if(val=='desc'){
-          this.transList.sort(function (a, b){
+          });
+          this.sort = "desc";
+        } else if (val == "desc") {
+          this.transList.sort(function(a, b) {
             return b.value - a.value;
-          })
-          this.sort='asc';
-        }  
+          });
+          this.sort = "asc";
+        }
       }
     }
   };
@@ -116,14 +117,14 @@
       transform: translateX(10px);
       opacity: 0;
     }
-    .angle-box{
-      border:1px solid $theme-color;
+    .angle-box {
+      border: 1px solid $theme-color;
       border-radius: 5px;
-      width:100px;
+      width: 100px;
       position: relative;
       cursor: pointer;
       .angle_top {
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         display: block;
@@ -135,7 +136,7 @@
         right: -5px;
       }
       .angle_bottom {
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         display: block;
@@ -145,15 +146,15 @@
         top: 2px;
         right: -5px;
       }
-      .sort-color{
+      .sort-color {
         border-color: transparent transparent #0cba71;
       }
-      .default-color{
+      .default-color {
         border-color: transparent transparent #5e5e5e;
       }
     }
-    .trans-list-move{
-      transition:transform 500ms;
+    .trans-list-move {
+      transition: transform 500ms;
     }
   }
 </style>

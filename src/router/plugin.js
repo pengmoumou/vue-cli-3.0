@@ -12,4 +12,9 @@ export default [{
     name: 'plugin_aos',
     component: resolve => require(['@d/plugin/aos'], resolve),
 },
+{
+    path: '/plugin/editor',
+    name: 'plugin_editor',
+    component: resolve => require(['@d/plugin/editor'], resolve),
+},
 ]

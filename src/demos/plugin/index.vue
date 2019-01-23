@@ -13,6 +13,7 @@
 </template>
 <script>
   export default {
+    name: "demo_plugin",
     data() {
       return {
         pluginLinks: [
@@ -25,6 +26,11 @@
             label: "AOS",
             img: require("@a/plugin/aos_img.jpg"),
             router: "/plugin/aos"
+          },
+          {
+            label: "Editor",
+            img: require("@a/duck.png"),
+            router: "/plugin/editor"
           }
         ]
       };

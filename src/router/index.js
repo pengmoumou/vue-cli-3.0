@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import cssRouter from '@r/css'
 import pluginRouter from '@r/plugin'
 import frameRouter from '@r/frame'
+import arithmeticRouter from '@r/arithmetic'
 
 Vue.use(Router)
 
@@ -21,6 +22,7 @@ let routes = {
         ...cssRouter,
         ...pluginRouter,
         ...frameRouter,
+        ...arithmeticRouter,
         {
             path: '*',
             redirect: '/'
@@ -31,7 +33,8 @@ let routes = {
 const router = new Router(routes);
 
 // 跳转后返回顶部
-router.afterEach((to, from, next) => {
+// router.afterEach((to, from, next) => {
+router.afterEach(() => {
     window.scrollTo(0, 0);
 })
 

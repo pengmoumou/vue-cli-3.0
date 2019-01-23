@@ -74,7 +74,7 @@
 <script>
   import Swiper from "swiper";
   export default {
-    name: "demo_swiper",
+    name: "plugin_swiper",
     data() {
       return {
         activeIndex: 0,

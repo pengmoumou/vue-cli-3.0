@@ -1,5 +1,5 @@
 <template>
-  <div class="banner_swiper">
+  <div class="banner-swiper">
     <div class="swiper-container" id="swiper-banner">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -49,7 +49,7 @@
 </script>
 <style lang="scss">
   @import "~swiper/dist/css/swiper.css";
-  .banner_swiper {
+  .banner-swiper {
     .swiper-container {
       .swiper-slide {
         background: $theme-color;

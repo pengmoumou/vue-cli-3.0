@@ -13,6 +13,7 @@
 </template>
 <script>
   export default {
+    name: "demo_css",
     data() {
       return {
         cssLinks: [

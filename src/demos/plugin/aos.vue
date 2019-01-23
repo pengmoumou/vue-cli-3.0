@@ -91,7 +91,7 @@
   import AOS from "aos";
   import "aos/dist/aos.css";
   export default {
-    name: "demo_aos",
+    name: "plugin_aos",
     data() {
       return {
         delayBtns: [100, 200, 300, 400, 500],

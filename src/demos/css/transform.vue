@@ -297,7 +297,7 @@
   import Slider from "@c/slider";
   // import TransformBox from "@c/transform_box";
   export default {
-    name: "demo_transform",
+    name: "css_transform",
     components: {
       Slider
       // TransformBox

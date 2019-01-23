@@ -13,6 +13,7 @@
 </template>
 <script>
   export default {
+    name: "demo_index",
     data() {
       return {
         demoLinks: [
@@ -35,6 +36,11 @@
             label: "demo.comps",
             img: require("@a/duck.png"),
             router: "/comps"
+          },
+          {
+            label: "demo.arithmetic",
+            img: require("@a/duck.png"),
+            router: "/arithmetic"
           }
         ]
       };

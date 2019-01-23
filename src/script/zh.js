@@ -5,6 +5,7 @@ export default {
         frame: '框架',
         instance: '实例',
         comps: '组件',
+        arithmetic: '算法'
     },
     css: {
         transition: '过渡',
@@ -25,6 +26,9 @@ export default {
         matrix: '矩阵',
     },
     canvas: {
+    },
+    arithmetic: {
+        sort: '排序'
     },
     frame: {
         toolbar: '工具栏',

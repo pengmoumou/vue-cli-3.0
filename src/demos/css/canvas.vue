@@ -22,7 +22,7 @@
   import GlobuleCanvas from "./components/globule_canvas";
   import BrushCanvas from "./components/brush_canvas";
   export default {
-    name: "demo_canvas",
+    name: "css_canvas",
     data() {
       return {};
     },

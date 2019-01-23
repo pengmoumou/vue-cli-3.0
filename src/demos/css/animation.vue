@@ -19,7 +19,7 @@
 </template>
 <script>
   export default {
-    name: "demo_animation",
+    name: "css_animation",
     data() {
       return {};
     },

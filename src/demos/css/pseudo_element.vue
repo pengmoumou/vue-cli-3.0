@@ -42,7 +42,7 @@
 <script>
   import MySlot from "./components/mySlot.vue";
   export default {
-    name: "demo_pseudo_element",
+    name: "css_pseudo_element",
     components: {
       MySlot
     },
