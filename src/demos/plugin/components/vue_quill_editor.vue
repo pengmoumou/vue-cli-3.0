@@ -36,11 +36,11 @@
       },
       onEditorReady(editor) {
         console.log("editor ready!", editor);
-      },
-      onEditorChange({ editor, html, text }) {
-        console.log("editor change!", editor, html, text);
-        this.content = html;
       }
+      //   onEditorChange({ editor, html, text }) {
+      //     console.log("editor change!", editor, html, text);
+      //     this.content = html;
+      //   }
     }
   };
 </script>

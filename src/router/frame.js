@@ -8,4 +8,9 @@ export default [{
     name: 'frame_vuetify',
     component: resolve => require(['@d/frame/vuetify'], resolve),
 },
+{
+    path: '/frame/three',
+    name: 'frame_three',
+    component: resolve => require(['@d/frame/three'], resolve),
+},
 ]

@@ -3,11 +3,29 @@
     <div class="box-content box-mt">
       <head-demo :isShowMenu="isShowMenu" @showMenu="showMenu" v-model="activeRouter"></head-demo>
     </div>
-    <div class="box-content box-mt demo-box">
-
+    <div class="box-content box-mt demo-box" id="home" name="home">
+      1
+    </div>
+    <div class="box-content box-mt demo-box" id="products" name="products">
+      2
+    </div>
+    <div class="box-content box-mt demo-box" id="alliance" name="alliance">
+      3<span>alliance</span>
     </div>
     <div class="box-content box-mt demo-box">
-
+      4
+    </div>
+    <div class="box-content box-mt demo-box" id="news" name="news">
+      5<span>news</span>
+    </div>
+    <div class="box-content box-mt demo-box">
+      6
+    </div>
+    <div class="box-content box-mt demo-box">
+      7
+    </div>
+    <div class="box-content box-mt demo-box">
+      8<span id="about" name="about">about</span>
     </div>
     <foot-demo :class="{fixed:isFixed}" class="box-mt" @eventGetHeight="getFooterHeight"></foot-demo>
   </div>

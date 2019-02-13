@@ -21,6 +21,11 @@
             label: "Vuetify",
             img: require("@a/duck.png"),
             router: "/frame/vuetify"
+          },
+          {
+            label: "Three.js",
+            img: require("@a/duck.png"),
+            router: "/frame/three"
           }
         ]
       };
