@@ -31,6 +31,16 @@
             label: "Editor",
             img: require("@a/duck.png"),
             router: "/plugin/editor"
+          },
+          {
+            label: "axios",
+            img: require("@a/duck.png"),
+            router: "/plugin/axios"
+          },
+          {
+            label: "route",
+            img: require("@a/duck.png"),
+            router: "/plugin/route"
           }
         ]
       };

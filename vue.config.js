@@ -4,6 +4,15 @@ function resolve (dir) {
 }
 module.exports = {
   // baseUrl: process.env.NODE_ENV === 'production' ? '/src/' : '/',
+  devServer: {
+    proxy: {
+      '/demo': {
+        target: 'http://localhost:3000/demo/',
+        changeOrigin: true,
+        pathRewrite: { '^/demo': '' }
+      }
+    },
+  },
   css: {
     loaderOptions: {
       sass: {
