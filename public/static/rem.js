@@ -8,9 +8,9 @@
                 return;
             }
             if (clientWidth >= 750) {
-                docEl.style.fontSize = "18px";
+                docEl.style.fontSize = "200px";
             } else {
-                // docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
             }
         };
     if (!doc.addEventListener) {

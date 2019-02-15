@@ -3,8 +3,10 @@
     <div class="box-content box-mt">
       <head-demo :isShowMenu="isShowMenu" @showMenu="showMenu" v-model="activeRouter"></head-demo>
     </div>
-    <div class="box-content box-mt demo-box" id="home" name="home">
-      1
+    <div class="box-content box-mt sort-comp-box" id="home" name="home">
+      home
+      sort_comp
+      <sort-comp></sort-comp>
     </div>
     <div class="box-content box-mt demo-box" id="products" name="products">
       2
@@ -13,7 +15,8 @@
       3<span>alliance</span>
     </div>
     <div class="box-content box-mt demo-box">
-      4
+      Waterfall
+      <waterfall :imgArr="imgArr"></waterfall>
     </div>
     <div class="box-content box-mt demo-box" id="news" name="news">
       5<span>news</span>
@@ -33,21 +36,27 @@
 <script>
   import HeadDemo from "./components/head_demo";
   import FootDemo from "./components/foot_demo";
+  import Waterfall from "./components/waterfall";
+  import SortComp from "./components/sort_comp";
   export default {
     name: "demo_comps",
     components: {
       HeadDemo,
-      FootDemo
+      FootDemo,
+      Waterfall,
+      SortComp
     },
     data() {
       return {
         isFixed: true,
         footerHeight: 0,
         isShowMenu: true,
-        activeRouter: "/"
+        activeRouter: "/",
+        imgArr: []
       };
     },
     mounted() {
+      this.init();
       this.isOver();
       window.addEventListener("resize", this.isOver);
     },
@@ -55,6 +64,12 @@
       window.removeEventListener("resize", this.isOver);
     },
     methods: {
+      init() {
+        for (let i = 0; i < 20; i++) {
+          this.imgArr.push(i);
+          // this.imgArr.push(require("@a/duck.png"));
+        }
+      },
       isOver() {
         var result = window.matchMedia("(max-width: 750px)");
         if (result.matches) {
@@ -99,6 +114,9 @@
 
 <style lang="scss">
   .comps-main {
+    .sort-comp-box {
+      height: 500px;
+    }
     .fixed {
       position: fixed;
       bottom: 0;
