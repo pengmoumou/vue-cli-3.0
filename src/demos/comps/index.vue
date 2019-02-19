@@ -9,7 +9,8 @@
       <sort-comp></sort-comp>
     </div>
     <div class="box-content box-mt demo-box" id="products" name="products">
-      2
+      products pageination
+      <pageination :totalPage="10" v-model="currentPage" @changePage="changePage"></pageination>
     </div>
     <div class="box-content box-mt demo-box" id="alliance" name="alliance">
       3<span>alliance</span>
@@ -38,13 +39,15 @@
   import FootDemo from "./components/foot_demo";
   import Waterfall from "./components/waterfall";
   import SortComp from "./components/sort_comp";
+  import Pageination from "./components/pageination";
   export default {
     name: "demo_comps",
     components: {
       HeadDemo,
       FootDemo,
       Waterfall,
-      SortComp
+      SortComp,
+      Pageination
     },
     data() {
       return {
@@ -52,7 +55,8 @@
         footerHeight: 0,
         isShowMenu: true,
         activeRouter: "/",
-        imgArr: []
+        imgArr: [],
+        currentPage: 1
       };
     },
     mounted() {
@@ -107,6 +111,9 @@
         if (this.isShowMenu && result.matches) {
           this.isShowMenu = false;
         }
+      },
+      changePage(page) {
+        console.log(page);
       }
     }
   };

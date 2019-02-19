@@ -16,7 +16,8 @@ export default {
         pseudo_element: 'Pseudo Element',
         pseudo_class: 'Pseudo Class',
         scroll: 'Scroll',
-        svg: 'SVG'
+        svg: 'SVG',
+        self_adaption: 'Self Adaption'
     },
     transform: {
         rotate: 'Rotate',

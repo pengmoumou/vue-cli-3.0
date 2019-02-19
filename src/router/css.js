@@ -44,4 +44,9 @@ export default [
         name: 'css_svg',
         component: resolve => require(['@d/css/show_svg'], resolve),
     },
+    {
+        path: '/css/self_adaption',
+        name: 'css_self_adaption',
+        component: resolve => require(['@d/css/self_adaption'], resolve),
+    },
 ]

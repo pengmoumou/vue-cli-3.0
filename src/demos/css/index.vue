@@ -56,6 +56,11 @@
             label: "css.svg",
             img: require("@a/css/svg_img.jpg"),
             router: "/css/svg"
+          },
+          {
+            label: "css.self_adaption",
+            img: require("@a/css/svg_img.jpg"),
+            router: "/css/self_adaption"
           }
         ]
       };
