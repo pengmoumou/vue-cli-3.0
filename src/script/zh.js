@@ -28,7 +28,8 @@ export default {
     canvas: {
     },
     arithmetic: {
-        sort: '排序'
+        sort: '排序',
+        closure: '闭包'
     },
     frame: {
         toolbar: '工具栏',

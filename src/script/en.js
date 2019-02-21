@@ -30,7 +30,8 @@ export default {
 
     },
     arithmetic: {
-        sort: 'Sort'
+        sort: 'Sort',
+        closure: 'Closure'
     },
     frame: {
         toolbar: 'Toolbar',

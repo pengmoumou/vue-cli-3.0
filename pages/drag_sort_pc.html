@@ -7,14 +7,12 @@
         * {
             margin: 0;
             padding: 0;
-
         }
 
         .sort-box {
             /* position: absolute; */
             font-size: 0.18rem;
             width: 100%;
-
         }
 
         ul {
@@ -27,7 +25,7 @@
             line-height: 0.24rem;
             padding: 0.15rem 0.2rem;
             border-bottom: solid 0.01rem #eff5f7;
-            /* cursor: move; */
+            cursor: move;
         }
 
         .num-icon {
@@ -133,7 +131,8 @@
     var draging = null;
     var dragIndex = null;
     node.ondragstart = function (event) {
-        event.dataTransfer.setData("te", event.target.innerText);
+        //firefox设置了setData后元素才能拖动！！！！
+        event.dataTransfer.setData("te", event.target.innerText); //不能使用text，firefox会打开新tab
         draging = event.target;
         dragIndex = _index(draging);
         for (var icon of document.getElementsByClassName('num-icon')) {
@@ -165,6 +164,7 @@
             }
         }
     }
+    //问题：若鼠标在拖拽过程中移至拖拽范围外，该方法不执行
     node.ondrop = function () {
         // console.log(dragIndex);
         document.getElementsByClassName('option')[dragIndex].classList.remove('active');
@@ -185,14 +185,12 @@
 
     function _animate(prevRect, target) {
         var ms = 300;
-
         if (ms) {
             var currentRect = target.getBoundingClientRect();
 
             if (prevRect.nodeType === 1) {
                 prevRect = prevRect.getBoundingClientRect();
             }
-
             _css(target, 'transition', 'none');
             _css(target, 'transform', 'translate3d(' +
                 (prevRect.left - currentRect.left) + 'px,' +
@@ -202,10 +200,9 @@
             for (var i in arr) {
                 arr[i].innerHTML = Number(i) + 1;
             }
-            target.offsetWidth;
+            target.offsetWidth;// 触发重绘
             _css(target, 'transition', 'all ' + ms + 'ms');
             _css(target, 'transform', 'translate3d(0,0,0)');
-
             clearTimeout(target.animated);
             target.animated = setTimeout(function () {
                 _css(target, 'transition', '');
@@ -216,7 +213,6 @@
     }
     function _css(el, prop, val) {
         var style = el && el.style;
-
         if (style) {
             if (val === void 0) {
                 if (document.defaultView && document.defaultView.getComputedStyle) {
@@ -224,13 +220,11 @@
                 } else if (el.currentStyle) {
                     val = el.currentStyle;
                 }
-
                 return prop === void 0 ? val : val[prop];
             } else {
                 if (!(prop in style)) {
                     prop = '-webkit-' + prop;
                 }
-
                 style[prop] = val + (typeof val === 'string' ? '' : 'px');
             }
         }

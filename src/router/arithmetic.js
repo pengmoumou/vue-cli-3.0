@@ -6,5 +6,10 @@ export default [{
     path: '/arithmetic/sort',
     name: 'arithmetic_sort',
     component: resolve => require(['@d/arithmetic/sort'], resolve),
+},
+{
+    path: '/arithmetic/closure',
+    name: 'arithmetic_closure',
+    component: resolve => require(['@d/arithmetic/closure'], resolve),
 }
 ]

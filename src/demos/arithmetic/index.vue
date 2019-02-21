@@ -21,6 +21,11 @@
             label: "arithmetic.sort",
             img: require("@a/duck.png"),
             router: "/arithmetic/sort"
+          },
+          {
+            label: "arithmetic.closure",
+            img: require("@a/duck.png"),
+            router: "/arithmetic/closure"
           }
         ]
       };
