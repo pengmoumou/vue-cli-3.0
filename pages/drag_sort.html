@@ -168,6 +168,7 @@
     }
 </script>
 <script>
+    var optionNum = 4;
     var node = document.querySelector("#optionsPC");
     var draging = null;
     var dragIndex = null;
@@ -175,6 +176,9 @@
         event.dataTransfer.setData("te", event.target.innerText);
         draging = event.target;
         dragIndex = _index(draging);
+        for (var active of document.getElementsByClassName('active')) {
+            active.classList.remove('active');
+        }
         for (var icon of document.getElementsByClassName('num-icon')) {
             icon.classList.remove('active-icon');
         }
@@ -235,7 +239,7 @@
             var arr = document.getElementsByClassName('num-icon');
             for (var i in arr) {
                 //取坐标除以4的余数，是解决pc端与移动端样式类名共用出现的问题
-                arr[i].innerHTML = Number(i) % 4 + 1;
+                arr[i].innerHTML = Number(i) % optionNum + 1;
             }
             target.offsetWidth;
             _css(target, 'transition', 'all ' + ms + 'ms');
@@ -269,63 +273,65 @@
 </script>
 <script>
     var dom = document.querySelector('#optionsMobile');
-    var touching = null;
+    var touchTarget = null;
     var touchIndex = null;
-    // var maxW = document.body.clientWidth - dom.offsetWidth;
-    // var maxH = document.body.clientHeight - dom.offsetHeight;
+    var currentTarget = null;
+    var currentIndex = null;
+    var prevIndex = null;
+    var isBack = false;
     dom.addEventListener('touchstart', function (e) {
         var ev = e || window.event;
-        // var touch = ev.targetTouches[0];
-        // oL = touch.clientX - dom.offsetLeft;
-        // oT = touch.clientY - dom.offsetTop;
-        touching = event.target;
-        touchIndex = _index(touching);
+        var touch = ev.targetTouches[0];
+        touchY = touch.clientY - dom.offsetTop;
+        touchTarget = event.target;
+        currentTarget = touchTarget;
+        touchIndex = _index(touchTarget);
+        currentIndex = touchIndex;
+        prevIndex = touchIndex;
         for (var icon of document.getElementsByClassName('num-icon')) {
             icon.classList.remove('active-icon');
         }
-        document.getElementsByClassName('option')[touchIndex + 4].classList.add('active');
+        document.getElementsByClassName('option')[touchIndex + optionNum].classList.add('active');
         document.addEventListener("touchmove", defaultEvent, false);
     });
     dom.addEventListener('touchmove', function (e) {
         var ev = e || window.event;
-        var target = event.target;
-        touchIndex = _index(target);
-        // var touch = ev.targetTouches[0];
-        // var oLeft = touch.clientX - oL;
-        // var oTop = touch.clientY - oT;
-        // if (oLeft < 0) {
-        //     oLeft = 0;
-        // } else if (oLeft >= maxW) {
-        //     oLeft = maxW;
-        // }
-        // if (oTop < 0) {
-        //     oTop = 0;
-        // } else if (oTop >= maxH) {
-        //     oTop = maxH;
-        // }
-        // dom.style.left = oLeft + 'px';
-        // dom.style.top = oTop + 'px';
-        if (target.nodeName === "LI") {
-            if (target !== draging) {
-                var targetRect = target.getBoundingClientRect();
-                var touchingRect = touching.getBoundingClientRect();
-                if (target) {
-                    if (target.animated) {
+        var touch = ev.targetTouches[0];
+        var moveY = touch.clientY - touchY;
+        currentIndex = touchIndex + Math.floor(moveY / 50);
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        } else if (currentIndex > optionNum - 1) {
+            currentIndex = optionNum - 1;
+        }
+        currentTarget = document.getElementsByClassName('option')[currentIndex + optionNum];
+        if (touchTarget.nodeName === "LI") {
+            if (currentIndex !== prevIndex) {
+                var targetRect = currentTarget.getBoundingClientRect();
+                var touchingRect = touchTarget.getBoundingClientRect();
+                if (currentTarget) {
+                    if (currentTarget.animated) {
                         return;
                     }
                 }
-                if (_index(touching) < _index(target)) {
-                    target.parentNode.insertBefore(touching, target.nextSibling);
+                if ((touchIndex > currentIndex && isBack) || (touchIndex < currentIndex && !isBack)) {
+                    currentTarget.parentNode.insertBefore(touchTarget, currentTarget.nextSibling);
                 } else {
-                    target.parentNode.insertBefore(touching, target);
+                    currentTarget.parentNode.insertBefore(touchTarget, currentTarget);
                 }
-                _animate(touchingRect, touching);
-                _animate(targetRect, target);
+                _animate(touchingRect, touchTarget);
+                _animate(targetRect, currentTarget);
+                prevIndex = currentIndex;
+                if (currentIndex === 0 || currentIndex === 3) {
+                    isBack = !isBack;
+                }
             }
         }
     });
     dom.addEventListener('touchend', function () {
-        document.getElementsByClassName('option')[touchIndex + 4].classList.remove('active');
+        for (var active of document.getElementsByClassName('active')) {
+            active.classList.remove('active');
+        }
         for (var icon of document.getElementsByClassName('num-icon')) {
             icon.classList.add('active-icon');
         }

@@ -139,6 +139,7 @@
     var currentTarget = null;
     var currentIndex = null;
     var prevIndex = null;
+    var isBack = false;
     //手指触摸开始，记录div的初始位置
     dom.addEventListener('touchstart', function (e) {
         var ev = e || window.event;
@@ -160,11 +161,7 @@
         var ev = e || window.event;
         var touch = ev.targetTouches[0];
         var moveY = touch.clientY - touchY;
-        if (moveY >= 25 && currentIndex < optionNum - 1) {
-            currentIndex = touchIndex + Math.floor(moveY / 25);
-        } else if (currentIndex > 0 && moveY <= -25) {
-            currentIndex = touchIndex + Math.ceil(moveY / 25);
-        }
+        currentIndex = touchIndex + Math.floor(moveY / 50);
         if (currentIndex < 0) {
             currentIndex = 0;
         } else if (currentIndex > optionNum - 1) {
@@ -173,8 +170,6 @@
         currentTarget = document.getElementsByClassName('option')[currentIndex];
         if (touchTarget.nodeName === "LI") {
             if (currentIndex !== prevIndex) {
-                console.log('touchIndex' + touchIndex + 'currentIndex' + currentIndex + 'prevIndex' + prevIndex);
-
                 var targetRect = currentTarget.getBoundingClientRect();
                 var touchingRect = touchTarget.getBoundingClientRect();
                 if (currentTarget) {
@@ -182,7 +177,7 @@
                         return;
                     }
                 }
-                if (currentIndex < touchIndex) {
+                if ((touchIndex > currentIndex && isBack) || (touchIndex < currentIndex && !isBack)) {
                     currentTarget.parentNode.insertBefore(touchTarget, currentTarget.nextSibling);
                 } else {
                     currentTarget.parentNode.insertBefore(touchTarget, currentTarget);
@@ -190,12 +185,18 @@
                 _animate(touchingRect, touchTarget);
                 _animate(targetRect, currentTarget);
                 prevIndex = currentIndex;
+                if (currentIndex === 0 || currentIndex === 3) {
+                    isBack = !isBack;
+                }
             }
         }
     });
     //触摸结束时的处理
     dom.addEventListener('touchend', function () {
-        document.getElementsByClassName('option')[currentIndex].classList.remove('active');
+        // document.getElementsByClassName('option')[currentIndex].classList.remove('active');
+        for (var active of document.getElementsByClassName('active')) {
+            active.classList.remove('active');
+        }
         for (var icon of document.getElementsByClassName('num-icon')) {
             icon.classList.add('active-icon');
         }
