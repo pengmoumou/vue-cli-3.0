@@ -16,7 +16,8 @@ export default {
         pseudo_element: '伪元素',
         pseudo_class: '伪类',
         scroll: '滚动',
-        svg: '可缩放矢量图形'
+        svg: '可缩放矢量图形',
+        self_adaption: '自适应'
     },
     transform: {
         rotate: '旋转',
@@ -29,7 +30,13 @@ export default {
     },
     arithmetic: {
         sort: '排序',
-        closure: '闭包'
+        closure: '闭包',
+        bubble: '冒泡排序',
+        insert: '插入排序',
+        select: '选择排序',
+        merge: '归并排序',
+        quick: '快速排序',
+        heap: '堆排序'
     },
     frame: {
         toolbar: '工具栏',
@@ -43,7 +50,8 @@ export default {
         restart: '重新开始',
         slowly: '慢',
         normal: '正常',
-        quickly: '快'
+        quickly: '快',
+        clear: '清空'
     },
     text: {
         score: '得分',
@@ -51,7 +59,8 @@ export default {
         congratulation: '恭喜你',
         restart: '游戏已结束，请重新开始游戏',
         speed: '速度',
-        circle_num: '初始圆的数量'
+        circle_num: '初始圆的数量',
+        result: '结果'
     },
     placeholder: {
         circle_num: '请输入1-100的整数'

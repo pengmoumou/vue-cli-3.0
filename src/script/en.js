@@ -31,7 +31,13 @@ export default {
     },
     arithmetic: {
         sort: 'Sort',
-        closure: 'Closure'
+        closure: 'Closure',
+        bubble: 'Bubble Sort',
+        insert: 'Insert Sort',
+        select: 'Select Sort',
+        merge: 'Merge Sort',
+        quick: 'Quick Sort',
+        heap: 'Heap Sort'
     },
     frame: {
         toolbar: 'Toolbar',
@@ -45,7 +51,8 @@ export default {
         restart: 'Restart',
         slowly: 'Slowly',
         normal: 'Normal',
-        quickly: 'Quickly'
+        quickly: 'Quickly',
+        clear: 'Clear'
     },
     text: {
         score: 'Score',
@@ -53,7 +60,8 @@ export default {
         congratulation: 'Congratulation to you',
         restart: 'The game is over. Please restart the game',
         speed: 'Speed',
-        circle_num: 'Number of initial circles'
+        circle_num: 'Number of initial circles',
+        result: 'Result'
     },
     placeholder: {
         circle_num: 'Please enter an integer of 1-100'
