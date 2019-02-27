@@ -162,10 +162,9 @@
         background: $gray-color;
         text-align: center;
         color: $white-color;
-        font-size: 3em;
+        font-size: 18px;
         span {
           display: block;
-          font-size: 1rem;
         }
         &--primary {
           @include center-v;
