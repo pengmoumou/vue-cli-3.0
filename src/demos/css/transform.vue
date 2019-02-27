@@ -74,16 +74,33 @@
         </div>
       </div>
     </div>
-    <div class="box-content box-mt transform-box cir-box">
+
+    <div class="box-content box-mt transform-box">
       <p class="box-title">
         {{$t('demo.instance')}}
       </p>
-      <div class="cir" :style="'transform:rotate('+cirDeg+'deg)'">
+      <div class="cir-box">
+        <div class="cir" :style="'transform:rotate('+cirDeg+'deg)'">
+        </div>
+        <div class="cir-content">
+          <div class="hover-title">技术优势</div>
+          <div class="cir-hover" v-for="(item,index) in hoverArr" :key="index"
+            @mouseover="overShow(index+1)">{{item}}</div>
+        </div>
       </div>
-      <div class="cir-content">
-        <div class="hover-title">技术优势</div>
-        <div class="cir-hover" v-for="(item,index) in hoverArr" :key="index"
-          @mouseover="overShow(index+1)">{{item}}</div>
+      <div class="rotate-box">
+        <ul>
+          <li></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+          <li><span></span></li>
+        </ul>
       </div>
     </div>
     <div class="box-content box-mt transform-box">
@@ -386,6 +403,102 @@
         background: $theme-color;
       }
     }
+    .rotate-box {
+      background: $dark_color;
+      ul {
+        width: 610px;
+        height: 610px;
+        // margin: 40px auto;
+        margin: 0 auto;
+        padding: 20px 0;
+        list-style: none;
+        overflow: hidden;
+        /*background: #ccc;*/
+        position: relative;
+      }
+      ul li {
+        border: 2px solid #394057;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        /*animation: change 3s linear infinite;*/
+        animation-name: change;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      ul li:nth-child(1) {
+        width: 60px;
+        height: 60px;
+        box-shadow: 0px 0px 50px #c90;
+        background: #c90;
+        border: none;
+        animation-duration: 1.2s;
+      }
+      ul li:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        animation-duration: 3.2s;
+      }
+      ul li:nth-child(3) {
+        width: 180px;
+        height: 180px;
+        animation-duration: 9.2s;
+      }
+      ul li:nth-child(4) {
+        width: 240px;
+        height: 240px;
+        animation-duration: 4.2s;
+      }
+      ul li:nth-child(5) {
+        width: 300px;
+        height: 300px;
+        animation-duration: 2.2s;
+      }
+      ul li:nth-child(6) {
+        width: 360px;
+        height: 360px;
+        animation-duration: 8.2s;
+      }
+      ul li:nth-child(7) {
+        width: 420px;
+        height: 420px;
+        animation-duration: 10.2s;
+      }
+      ul li:nth-child(8) {
+        width: 480px;
+        height: 480px;
+        animation-duration: 15.2s;
+      }
+      ul li:nth-child(9) {
+        width: 540px;
+        height: 540px;
+        animation-duration: 6.2s;
+      }
+      ul li:nth-child(10) {
+        width: 600px;
+        height: 600px;
+        animation-duration: 7.2s;
+      }
+      ul li span {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        background: green;
+        border-radius: 50%;
+      }
+      @keyframes change {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    }
     .cir-box {
       background: $dark_color;
       color: $white-color;
@@ -397,7 +510,6 @@
         background-size: 500px 500px;
         transition: 0.5s ease-in-out;
       }
-
       .cir-content {
         position: absolute;
         top: 0;
@@ -405,11 +517,15 @@
         width: 100%;
         height: 500px;
         .hover-title {
+          width: 100%;
           position: absolute;
           text-align: center;
-          top: 300px;
-          left: 570px;
+          line-height: 500px;
+          // top: 290px;
+          // left: 570px;
           font-size: 18px;
+        }
+        .cir-hover:nth-child(1) {
         }
       }
     }

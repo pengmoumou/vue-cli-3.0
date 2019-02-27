@@ -13,7 +13,8 @@
       <pageination :totalPage="10" v-model="currentPage" @changePage="changePage"></pageination>
     </div>
     <div class="box-content box-mt demo-box" id="alliance" name="alliance">
-      3<span>alliance</span>
+      alliance select
+      <select-comp></select-comp>
     </div>
     <div class="box-content box-mt demo-box">
       Waterfall
@@ -40,6 +41,7 @@
   import Waterfall from "./components/waterfall";
   import SortComp from "./components/sort_comp";
   import Pageination from "./components/pageination";
+  import SelectComp from "./components/select_comp";
   export default {
     name: "demo_comps",
     components: {
@@ -47,7 +49,8 @@
       FootDemo,
       Waterfall,
       SortComp,
-      Pageination
+      Pageination,
+      SelectComp
     },
     data() {
       return {

@@ -12,12 +12,13 @@
         camera: null,
         scene: null,
         renderer: null,
-        mesh: null
+        group: null
+        //mesh: null
       };
     },
     mounted() {
       this.init();
-      this.animate();
+      // this.animate();
     },
     methods: {
       init() {
@@ -30,25 +31,19 @@
         );
         this.camera.position.z = 1;
         this.scene = new THREE.Scene();
-        var geometry = new THREE.CircleGeometry(0.2, 32);
-        var material = new THREE.MeshNormalMaterial();
-        this.mesh = new THREE.Mesh(geometry, material);
-        this.scene.add(this.mesh);
+        this.group = new THREE.Group();
+        let geometry = new THREE.BoxBufferGeometry(1, 1, 1);
+        let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        this.getMesh(geometry, material);
+        // this.scene.add(this.mesh);
+        this.scene.add(this.group);
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(circle.clientWidth, circle.clientHeight);
         circle.appendChild(this.renderer.domElement);
       },
-      animate() {
-        requestAnimationFrame(this.animate);
-        this.mesh.rotation.x += 0.01;
-        this.mesh.rotation.y += 0.02;
-        // let clock = new THREE.Clock(); //时间跟踪
-        // //圆周运动
-        // let time = clock.getElapsedTime() * 1;
-        // this.mesh.position.x = Math.cos(time) * 10;
-        // this.mesh.position.y = Math.sin(time) * 10;
-        // console.log(time);
-        this.renderer.render(this.scene, this.camera);
+      getMesh(geometry, material) {
+        let mesh = new THREE.Mesh(geometry, material);
+        this.group.add(mesh);
       }
     }
   };
@@ -57,11 +52,6 @@
 <style lang="scss">
   .three-one {
     #circle {
-      //   display: block;
-      //   width: 20px;
-      //   height: 20px;
-      //   border-radius: 50%;
-      //   background: $theme-color;
       height: 400px;
     }
   }
