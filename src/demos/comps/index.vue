@@ -78,21 +78,21 @@
         }
       },
       isOver() {
-        var result = window.matchMedia("(max-width: 750px)");
+        let result = window.matchMedia("(max-width: 750px)");
         if (result.matches) {
           this.isShowMenu = false;
         } else {
           this.isShowMenu = true;
         }
         // console.log(this.isShowMenu);
-        var bodyHeight = 0;
+        let bodyHeight = 0;
         if (this.isFixed) {
           bodyHeight = Number(this.$el.offsetHeight) + this.footerHeight;
         } else {
           bodyHeight = Number(this.$el.offsetHeight);
         }
         // console.log("bodyHeight " + bodyHeight + "footer " + this.footerHeight);
-        var winHeight = window.innerHeight;
+        let winHeight = window.innerHeight;
         // console.log("winHeight " + winHeight);
         if (bodyHeight > winHeight) {
           // console.log("scroll");
@@ -110,7 +110,7 @@
         this.isShowMenu = !this.isShowMenu;
       },
       hideMenu() {
-        var result = window.matchMedia("(max-width:1200px)");
+        let result = window.matchMedia("(max-width:1200px)");
         if (this.isShowMenu && result.matches) {
           this.isShowMenu = false;
         }

@@ -61,7 +61,7 @@
       this.drawSnake();
       //键盘事件，其中的if判定是为了让蛇不能直接掉头
       document.onkeydown = function(e) {
-        var ev = e || window.event;
+        let ev = e || window.event;
         switch (ev.keyCode) {
           case 37: {
             if (that.snake.direction !== 39) {

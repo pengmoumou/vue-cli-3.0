@@ -68,7 +68,7 @@ function WriteFont (id, options) {
         obj.context.strokeStyle = "#fff";
         obj.context.clearRect(0, 0, obj.canvasWidth, obj.canvasHeight);
         if (obj.isShowBorder) {
-            console.log("show border");
+            // console.log("show border");
             obj.context.beginPath();
             var size = obj.borderWidth / 2;
             //画外面的框

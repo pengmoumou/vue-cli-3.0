@@ -16,6 +16,7 @@
       <gobang-canvas></gobang-canvas>
     </div>
     <div class="box-content box-mt demo-box">
+      <pac-man-canvas></pac-man-canvas>
     </div>
   </div>
 </template>
@@ -25,6 +26,7 @@
   import GlobuleCanvas from "./components/globule_canvas";
   import BrushCanvas from "./components/brush_canvas";
   import GobangCanvas from "./components/gobang_canvas";
+  import PacManCanvas from "./components/pac_man_canvas";
   export default {
     name: "css_canvas",
     data() {
@@ -35,7 +37,8 @@
       CircleMouse,
       GlobuleCanvas,
       BrushCanvas,
-      GobangCanvas
+      GobangCanvas,
+      PacManCanvas
     },
     mounted() {},
     methods: {}

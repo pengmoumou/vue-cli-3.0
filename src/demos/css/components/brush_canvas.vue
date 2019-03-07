@@ -3,7 +3,7 @@
     <canvas id="brush" width="500" height="500">
       <p>{{$t('error.canvas')}}</p>
     </canvas>
-    <button class="btn" @click="onClear">清空</button>
+    <button class="btn" @click="onClear">{{$t("btn.clear")}}</button>
   </div>
 </template>
 <script>

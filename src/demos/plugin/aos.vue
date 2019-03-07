@@ -131,7 +131,7 @@
     },
     methods: {
       handleScroll() {
-        var scrollTop =
+        let scrollTop =
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop;

@@ -111,8 +111,8 @@
         autoplay: true,
         autoHeight: true
       });
-      var that = this;
-      var mySwiper = new Swiper("#swiper3", {
+      let that = this;
+      let mySwiper = new Swiper("#swiper3", {
         direction: "horizontal",
         autoHeight: true,
         on: {

@@ -29,7 +29,7 @@
         return true;
       },
       indexs() {
-        var left = 1,
+        let left = 1,
           right = this.totalPage,
           arr = [];
         if (this.totalPage >= 5) {

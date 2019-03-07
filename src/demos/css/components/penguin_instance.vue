@@ -59,7 +59,7 @@
           alert(this.$t("text.restart"));
           return;
         }
-        var n = Math.floor(Math.random() * this.penguinArr.length + 1) - 1;
+        let n = Math.floor(Math.random() * this.penguinArr.length + 1) - 1;
         let itemValue = this.penguinArr[n];
         // console.log(index + "=>" + itemValue);
         let className = "active" + itemValue;

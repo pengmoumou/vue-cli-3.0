@@ -66,7 +66,7 @@
           return;
         }
         this.circles = [];
-        for (var i = 0; i < Number(this.circle_num); i++) {
+        for (let i = 0; i < Number(this.circle_num); i++) {
           this.circles.push(
             new Circle(Math.random() * this.w, Math.random() * this.h)
           );
@@ -84,7 +84,7 @@
         }
         if (this.current_circle.x) {
           this.drawMouse(this.content_circle);
-          for (var k = 1; k < this.circles.length; k++) {
+          for (let k = 1; k < this.circles.length; k++) {
             this.current_circle.drawLine(this.content_circle, this.circles[k]);
           }
         }

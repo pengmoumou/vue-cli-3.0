@@ -59,7 +59,7 @@
         this.y += this.dy;
         this.r--;
         if (this.r < 0) {
-          for (var i = 0; i < that.circleArr.length; i++) {
+          for (let i = 0; i < that.circleArr.length; i++) {
             if (that.circleArr[i] === this) {
               that.circleArr.splice(i, 1);
             }
@@ -76,7 +76,7 @@
       //设置定时器每20毫秒更新和渲染
       setInterval(function() {
         that.globule_content.clearRect(0, 0, that.w, that.h);
-        for (var i = 0; i < that.circleArr.length; i++) {
+        for (let i = 0; i < that.circleArr.length; i++) {
           that.circleArr[i].update() &&
             that.circleArr[i].render(that.globule_content);
         }
