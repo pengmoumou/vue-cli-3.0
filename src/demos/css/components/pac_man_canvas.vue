@@ -8,12 +8,11 @@
 </template>
 <script>
   import Game from "../js/game";
-  import mapData from "../js/game";
+  import mapData from "../js/mapdata";
   export default {
     name: "pac_man_canvas",
     data() {
       return {
-        data: mapData,
         goods: {
           //能量豆
           "1,3": 1,
@@ -32,6 +31,8 @@
     mounted() {
       this.game = new Game("pac-man");
       this.init();
+      this.runGame();
+      this.endStage();
       this.game.init();
     },
     methods: {
@@ -46,7 +47,7 @@
           height: 100,
           frames: 3,
           draw: function(context) {
-            let t = Math.abs(5 - (times % 10));
+            let t = Math.abs(5 - (this.times % 10));
             context.fillStyle = "#FFE600";
             context.beginPath();
             context.arc(
@@ -82,62 +83,63 @@
       },
       runGame() {
         let stage, map, beans, player, times;
+        let that = this;
         stage = this.game.createStage({
           update: function() {
-            var stage = this;
-            if (stage.status == 1) {
+            if (that.status == 1) {
               //场景正常运行
-              items.forEach(function(item) {
+              this.items.forEach(function(item) {
                 if (
                   map &&
                   !map.get(item.coord.x, item.coord.y) &&
                   !map.get(player.coord.x, player.coord.y)
                 ) {
-                  var dx = item.x - player.x;
-                  var dy = item.y - player.y;
+                  let dx = item.x - player.x;
+                  let dy = item.y - player.y;
                   if (dx * dx + dy * dy < 750 && item.status != 4) {
                     //物体检测
                     if (item.status == 3) {
                       item.status = 4;
-                      _SCORE += 10;
+                      that.score += 10;
                     } else {
-                      stage.status = 3;
-                      stage.timeout = 30;
+                      item.status = 3;
+                      item.timeout = 30;
                     }
                   }
                 }
               });
               if (JSON.stringify(beans.data).indexOf(0) < 0) {
                 //当没有物品的时候，进入结束画面
-                game.nextStage();
+                this.game.nextStage();
               }
             } else if (stage.status == 3) {
               //场景临时状态
               if (!stage.timeout) {
-                _LIFE--;
-                if (_LIFE) {
+                this.life--;
+                if (this.life) {
                   stage.resetItems();
                 } else {
-                  game.nextStage();
+                  this.game.nextStage();
                   return false;
                 }
               }
             }
           }
         });
+        // console.log(mapData);
         //绘制地图
         map = stage.createMap({
           x: 60,
           y: 10,
-          data: _DATA,
+          data: mapData,
           cache: true,
           draw: function(context) {
             context.lineWidth = 2;
-            for (var j = 0; j < this.y_length; j++) {
-              for (var i = 0; i < this.x_length; i++) {
-                var value = this.get(i, j);
+            for (let j = 0; j < this.y_length; j++) {
+              for (let i = 0; i < this.x_length; i++) {
+                let value = this.get(i, j);
                 if (value) {
-                  var code = [0, 0, 0, 0];
+                  let code = [0, 0, 0, 0];
                   if (
                     this.get(i + 1, j) &&
                     !(
@@ -184,7 +186,7 @@
                   }
                   if (code.indexOf(1) > -1) {
                     context.strokeStyle = value == 2 ? "#FFF" : "#09C";
-                    var pos = this.coord2position(i, j);
+                    let pos = this.coord2position(i, j);
                     switch (code.join("")) {
                       case "1100":
                         context.beginPath();
@@ -238,20 +240,21 @@
                         context.stroke();
                         context.closePath();
                         break;
-                      default:
-                        var dist = this.size / 2;
+                      default: {
+                        let self = this;
                         code.forEach(function(v, index) {
                           if (v) {
                             context.beginPath();
                             context.moveTo(pos.x, pos.y);
                             context.lineTo(
-                              pos.x - _COS[index] * dist,
-                              pos.y - _SIN[index] * dist
+                              pos.x - that.cos[index] * (self.size / 2),
+                              pos.y - that.sin[index] * (self.size / 2)
                             );
                             context.stroke();
                             context.closePath();
                           }
                         });
+                      }
                     }
                   }
                 }
@@ -260,18 +263,19 @@
           }
         });
         //物品地图
+
         beans = stage.createMap({
           x: 60,
           y: 10,
-          data: _DATA,
+          data: mapData,
           frames: 8,
           draw: function(context) {
-            for (var j = 0; j < this.y_length; j++) {
-              for (var i = 0; i < this.x_length; i++) {
+            for (let j = 0; j < this.y_length; j++) {
+              for (let i = 0; i < this.x_length; i++) {
                 if (!this.get(i, j)) {
-                  var pos = this.coord2position(i, j);
+                  let pos = this.coord2position(i, j);
                   context.fillStyle = "#F5F5DC";
-                  if (_GOODS[i + "," + j]) {
+                  if (that.goods.hasOwnProperty(i + "," + j)) {
                     context.beginPath();
                     context.arc(
                       pos.x,
@@ -305,7 +309,7 @@
             context.textAlign = "left";
             context.textBaseline = "top";
             context.fillStyle = "#FFF";
-            context.fillText(_SCORE, this.x + 12, this.y);
+            context.fillText(this.score, this.x + 12, this.y);
           }
         });
         //状态文字
@@ -330,8 +334,8 @@
           width: 30,
           height: 30,
           draw: function(context) {
-            for (var i = 0; i < _LIFE - 1; i++) {
-              var x = this.x + 40 * i,
+            for (let i = 0; i < this.life - 1; i++) {
+              let x = this.x + 40 * i,
                 y = this.y;
               context.fillStyle = "#FFE600";
               context.beginPath();
@@ -350,12 +354,12 @@
           }
         });
         //NPC
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
           stage.createItem({
             width: 30,
             height: 30,
             orientation: 3,
-            color: _COLOR[i],
+            color: this.color[i],
             location: map,
             coord: { x: 12 + i, y: 14 },
             vector: { x: 12 + i, y: 14 },
@@ -364,7 +368,7 @@
             speed: 1,
             timeout: Math.floor(Math.random() * 120),
             update: function() {
-              var new_map;
+              let new_map;
               if (this.status == 3 && !this.timeout) {
                 this.status = 1;
               }
@@ -376,8 +380,8 @@
                     new_map = JSON.parse(
                       JSON.stringify(map.data).replace(/2/g, 0)
                     );
-                    var id = this._id;
-                    items.forEach(function(item) {
+                    let id = this._id;
+                    this.items.forEach(function(item) {
                       if (item._id != id && item.status == 1) {
                         //NPC将其它所有还处于正常状态的NPC当成一堵墙
                         new_map[item.coord.y][item.coord.x] = 1;
@@ -394,8 +398,8 @@
                   }
                 } else if (this.status == 3) {
                   new_map = JSON.parse(JSON.stringify(map.data).replace(/2/g, 0));
-                  var id = this._id;
-                  items.forEach(function(item) {
+                  let id = this._id;
+                  this.items.forEach(function(item) {
                     if (item._id != id) {
                       new_map[item.coord.y][item.coord.x] = 1;
                     }
@@ -428,7 +432,7 @@
                 if (this.vector.change) {
                   this.coord.x = this.vector.x;
                   this.coord.y = this.vector.y;
-                  var pos = map.coord2position(this.coord.x, this.coord.y);
+                  let pos = map.coord2position(this.coord.x, this.coord.y);
                   this.x = pos.x;
                   this.y = pos.y;
                 }
@@ -443,11 +447,12 @@
                   this.orientation = 3;
                 }
               }
-              this.x += this.speed * _COS[this.orientation];
-              this.y += this.speed * _SIN[this.orientation];
+              this.x += this.speed * that.cos[this.orientation];
+              this.y += this.speed * that.sin[this.orientation];
             },
             draw: function(context) {
-              var isSick = false;
+              let isSick = false;
+
               if (this.status == 3) {
                 isSick = this.timeout > 80 || times % 2 ? true : false;
               }
@@ -546,16 +551,20 @@
                 context.fillStyle = "#000";
                 context.beginPath();
                 context.arc(
-                  this.x - this.width * (0.15 - 0.04 * _COS[this.orientation]),
-                  this.y - this.height * (0.21 - 0.04 * _SIN[this.orientation]),
+                  this.x -
+                    this.width * (0.15 - 0.04 * that.cos[this.orientation]),
+                  this.y -
+                    this.height * (0.21 - 0.04 * that.sin[this.orientation]),
                   this.width * 0.07,
                   0,
                   2 * Math.PI,
                   false
                 );
                 context.arc(
-                  this.x + this.width * (0.15 + 0.04 * _COS[this.orientation]),
-                  this.y - this.height * (0.21 - 0.04 * _SIN[this.orientation]),
+                  this.x +
+                    this.width * (0.15 + 0.04 * that.cos[this.orientation]),
+                  this.y -
+                    this.height * (0.21 - 0.04 * that.sin[this.orientation]),
                   this.width * 0.07,
                   0,
                   2 * Math.PI,
@@ -567,7 +576,7 @@
             }
           });
         }
-        items = stage.getItemsByType(2);
+        this.items = stage.getItemsByType(2);
         //主角
         player = stage.createItem({
           width: 30,
@@ -579,38 +588,42 @@
           speed: 2,
           frames: 10,
           update: function() {
-            var coord = this.coord;
+            let coord = this.coord;
             if (!coord.offset) {
               if (this.control.orientation != "undefined") {
                 if (
                   !map.get(
-                    coord.x + _COS[this.control.orientation],
-                    coord.y + _SIN[this.control.orientation]
+                    coord.x + that.cos[this.control.orientation],
+                    coord.y + that.sin[this.control.orientation]
                   )
                 ) {
                   this.orientation = this.control.orientation;
                 }
               }
               this.control = {};
-              var value = map.get(
-                coord.x + _COS[this.orientation],
-                coord.y + _SIN[this.orientation]
+              let value = map.get(
+                coord.x + that.cos[this.orientation],
+                coord.y + that.sin[this.orientation]
               );
               if (value == 0) {
-                this.x += this.speed * _COS[this.orientation];
-                this.y += this.speed * _SIN[this.orientation];
+                this.x += this.speed * that.cos[this.orientation];
+                this.y += this.speed * that.sin[this.orientation];
               } else if (value < 0) {
-                this.x -= map.size * (map.x_length - 1) * _COS[this.orientation];
-                this.y -= map.size * (map.y_length - 1) * _SIN[this.orientation];
+                this.x -=
+                  map.size * (map.x_length - 1) * that.cos[this.orientation];
+                this.y -=
+                  map.size * (map.y_length - 1) * that.sin[this.orientation];
               }
             } else {
               if (!beans.get(this.coord.x, this.coord.y)) {
                 //吃豆
-                _SCORE++;
+                this.score++;
                 beans.set(this.coord.x, this.coord.y, 1);
-                if (_GOODS[this.coord.x + "," + this.coord.y]) {
+                if (
+                  that.goods.hasOwnProperty(this.coord.x + "," + this.coord.y)
+                ) {
                   //吃到能量豆
-                  items.forEach(function(item) {
+                  this.items.forEach(function(item) {
                     if (item.status == 1 || item.status == 3) {
                       //如果NPC为正常状态，则置为临时状态
                       item.timeout = 450;
@@ -619,8 +632,8 @@
                   });
                 }
               }
-              this.x += this.speed * _COS[this.orientation];
-              this.y += this.speed * _SIN[this.orientation];
+              this.x += this.speed * that.cos[this.orientation];
+              this.y += this.speed * that.sin[this.orientation];
             }
           },
           draw: function(context) {
@@ -687,12 +700,12 @@
           }
         });
       },
-      endGame() {
-        var stage = game.createStage();
+      endStage() {
+        let stage = this.game.createStage();
         //游戏结束
         stage.createItem({
-          x: game.width / 2,
-          y: game.height * 0.35,
+          x: this.game.width / 2,
+          y: this.game.height * 0.35,
           draw: function(context) {
             context.fillStyle = "#FFF";
             context.font = "bold 48px Helvetica";
@@ -703,15 +716,15 @@
         });
         //记分
         stage.createItem({
-          x: game.width / 2,
-          y: game.height * 0.5,
+          x: this.game.width / 2,
+          y: this.game.height * 0.5,
           draw: function(context) {
             context.fillStyle = "#FFF";
             context.font = "20px Helvetica";
             context.textAlign = "center";
             context.textBaseline = "middle";
             context.fillText(
-              "FINAL SCORE: " + (_SCORE + 50 * Math.max(_LIFE - 1, 0)),
+              "FINAL SCORE: " + (this.score + 50 * Math.max(this.life - 1, 0)),
               this.x,
               this.y
             );
@@ -722,10 +735,9 @@
           switch (e.keyCode) {
             case 13: //回车
             case 32: //空格
-              _SCORE = 0;
-              _LIFE = 3;
-              var st = game.setStage(1);
-              st.reset();
+              this.score = 0;
+              this.life = 3;
+              this.game.setStage(1).reset();
               break;
           }
         });
