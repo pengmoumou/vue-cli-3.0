@@ -41,6 +41,11 @@
             label: "route",
             img: require("@a/duck.png"),
             router: "/plugin/route"
+          },
+          {
+            label: "echart",
+            img: require("@a/duck.png"),
+            router: "/plugin/echart"
           }
         ]
       };

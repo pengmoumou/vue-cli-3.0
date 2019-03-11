@@ -44,5 +44,10 @@ export default [{
             component: resolve => require(['@d/plugin/components/demo2'], resolve),
         }
     ]
-}
+},
+{
+    path: '/plugin/echart',
+    name: 'plugin_echart',
+    component: resolve => require(['@d/plugin/echart'], resolve),
+},
 ]
