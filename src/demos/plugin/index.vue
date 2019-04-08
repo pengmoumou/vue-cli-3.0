@@ -46,6 +46,11 @@
             label: "echart",
             img: require("@a/duck.png"),
             router: "/plugin/echart"
+          },
+          {
+            label: "pdf",
+            img: require("@a/duck.png"),
+            router: "/plugin/pdf"
           }
         ]
       };

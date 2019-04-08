@@ -41,7 +41,7 @@
             label: "demo.arithmetic",
             img: require("@a/duck.png"),
             router: "/arithmetic"
-          }
+          },
         ]
       };
     },

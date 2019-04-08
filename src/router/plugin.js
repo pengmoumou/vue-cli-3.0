@@ -50,4 +50,9 @@ export default [{
     name: 'plugin_echart',
     component: resolve => require(['@d/plugin/echart'], resolve),
 },
+{
+    path: '/plugin/pdf',
+    name: 'plugin_pdf',
+    component: resolve => require(['@d/plugin/pdf'], resolve),
+},
 ]
