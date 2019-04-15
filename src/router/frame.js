@@ -13,4 +13,9 @@ export default [{
     name: 'frame_three',
     component: resolve => require(['@d/frame/three'], resolve),
 },
+{
+    path: '/frame/element',
+    name: 'frame_element',
+    component: resolve => require(['@d/frame/element'], resolve),
+},
 ]
