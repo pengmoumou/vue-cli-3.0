@@ -24,7 +24,7 @@ const copyArray = (arr, props) => {
       }
       if (value !== undefined) itemCopy[name] = value;
     });
-    if (Array.isArray(item[childrenProp])) {
+    if (Array.isArray(item[childrenProp]) && item[childrenProp].length > 0) {
       itemCopy[childrenProp] = copyArray(item[childrenProp], props);
     }
     result.push(itemCopy);
@@ -49,22 +49,22 @@ export default {
       hoverTimer: 0,
       clicking: false,
       id: generateId(),
-      multiValue: []
+      multiValue: [],
+      parents: []
     };
   },
-
   watch: {
     visible(value) {
       if (value) {
-        this.activeValue = this.value;
-        // this.multiValue = this.value;
+        // this.activeValue = this.value;
+        this.multiValue = this.value;
       }
     },
     value: {
       immediate: true,
       handler(value) {
-        this.activeValue = value;
-        // this.multiValue = value;
+        // this.activeValue = value;
+        this.multiValue = value;
       }
     }
   },
@@ -108,14 +108,18 @@ export default {
     },
     multiItem() {
       let items = [];
-      let getOption = (options, value) => {
+      let parents = [];
+      let getOption = (options, value, parent = null) => {
         // console.log(options);
         options.forEach(option => {
           if (Array.isArray(option.children) && option.children.length > 0) {
-            getOption(option.children, value);
+            getOption(option.children, value, option);
           } else {
             if (option.value === value) {
               items.push(option);
+              if (parent) {
+                parents.push(parent.value);
+              }
             }
           }
         });
@@ -125,7 +129,8 @@ export default {
       this.multiValue.forEach(value => {
         getOption(optionsCopy, value);
       });
-      console.log(items);
+      // console.log(items);
+      this.parents = parents;
       return items;
     }
   },
@@ -178,6 +183,7 @@ export default {
       } else {
         this.$emit("activeItemChange", this.activeValue);
       }
+      // console.log(this.activeValue);
     },
     scrollMenu(menu) {
       scrollIntoView(menu, menu.getElementsByClassName("is-active")[0]);
@@ -192,6 +198,7 @@ export default {
   render(h) {
     const {
       multiValue,
+      parents,
       activeValue,
       activeOptions,
       visible,
@@ -353,13 +360,25 @@ export default {
           });
           return isActive;
         };
+        let handleParentsActive = function(item) {
+          let isActive = false;
+          parents.forEach(itemVaule => {
+            // console.log(itemVaule);
+            if (item.value == itemVaule) {
+              isActive = true;
+            }
+          });
+          return isActive;
+        };
         return (
           <li
             class={{
               "el-cascader-menu__item": true,
               "el-cascader-menu__item--extensible": item.children,
               "is-active": handleMultiActive(item),
-              "is-disabled": item.disabled
+              "is-disabled": item.disabled,
+              "bule-color": handleParentsActive(item),
+              "bg-color": item.value === activeValue[menuIndex]
             }}
             ref={item.value === activeValue[menuIndex] ? "activeItem" : null}
             {...events}
@@ -469,6 +488,15 @@ export default {
     font-size: 12px;
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
+  }
+  .el-cascader-menu__item.is-active {
+    background: #fff;
+  }
+  .bule-color {
+    color: #409eff;
+  }
+  .bg-color {
+    background: #f5f7fa;
   }
 }
 </style>
