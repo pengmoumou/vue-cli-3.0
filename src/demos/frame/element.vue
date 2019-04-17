@@ -6,22 +6,29 @@
     <div class="box-content box-mt demo-box">
       <multi-cascader :options="cascaderList" v-model="cascaderValue"></multi-cascader>
     </div>
+    <div class="box-content box-mt demo-box">
+      {{selectValue}}
+      <cascader-select :options="cascaderList" v-model="selectValue" @change="handleChange"></cascader-select>
+    </div>
   </div>
 </template>
 <script>
 import MultiSelect from "./components/multi_select";
 import MultiCascader from "./components/multi_cascader";
+import CascaderSelect from "./components/cascader_select";
 export default {
   name: "frame_element",
   components: {
     MultiSelect,
-    MultiCascader
+    MultiCascader,
+    CascaderSelect
   },
   data() {
     return {
       selectList: [],
       cascaderValue: [],
-      cascaderList: []
+      cascaderList: [],
+      selectValue: ""
     };
   },
   created() {
@@ -42,7 +49,11 @@ export default {
     ];
   },
   mounted() {},
-  methods: {}
+  methods: {
+    handleChange(data) {
+      // console.log(data);
+    }
+  }
 };
 </script>
 
