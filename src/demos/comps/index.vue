@@ -10,7 +10,9 @@
     </div>
     <div class="box-content box-mt demo-box" id="products" name="products">
       products pageination
-      <pageination :totalPage="10" v-model="currentPage" @changePage="changePage"></pageination>
+      <pageination :totalPage="100" v-model="currentPage" @changePage="changePage"></pageination>
+      <pageination-one :totalPage="10" v-model="currentPage" @changePage="changePage"></pageination-one>
+      <pageination-two :totalPage="10" v-model="currentPage" @changePage="changePage"></pageination-two>
     </div>
     <div class="box-content box-mt demo-box" id="alliance" name="alliance">
       alliance select
@@ -41,6 +43,8 @@
   import Waterfall from "./components/waterfall";
   import SortComp from "./components/sort_comp";
   import Pageination from "./components/pageination";
+  import PageinationOne from "./components/pageination_one";
+  import PageinationTwo from "./components/pageination_two";
   import SelectComp from "./components/select_comp";
   export default {
     name: "demo_comps",
@@ -50,6 +54,8 @@
       Waterfall,
       SortComp,
       Pageination,
+      PageinationOne,
+      PageinationTwo,
       SelectComp
     },
     data() {
