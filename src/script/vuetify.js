@@ -29,9 +29,9 @@ Vue.use(Vuetify, {
         warning: '#FFC107'
     },
     // 启用customProperties还将为每种主题颜色生成一个css变量，可以在组件的<style>块中使用它
-    options: {customProperties:true,},
+    options: { customProperties: true, },
     lang: {
-        locales: { 'zh-Hans': zh,en },
+        locales: { 'zh-Hans': zh, en },
         current: 'zh-Hans',
         //i18n与Vuetify集成
         t: (key, ...params) => i18n.t(key, params)
@@ -46,5 +46,5 @@ Vue.use(Vuetify, {
         // 'xbox': 'mdi-xbox',
         // 'playstation': 'mdi-playstation',
         // 'switch': 'mdi-nintendo-switch'
-      },//自定义图标
-  })
+    },//自定义图标
+})

@@ -1,9 +1,10 @@
 let path = require('path')
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
   // baseUrl: process.env.NODE_ENV === 'production' ? '/src/' : '/',
+  lintOnSave: false, // 是否开启eslint保存检测，有效值：ture | false | 'error'
   devServer: {
     proxy: {
       '/demo': {
